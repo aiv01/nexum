@@ -1,16 +1,18 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.InputSystem.Controls;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 2.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityValue = -9.81f;
-    [SerializeField] private float RotationSpeed = 4f;
-
+    [SerializeField] private float SmoorhBlend = 0.1f;
+    [SerializeField] private float sensitivity = .5f; 
+   
     [SerializeField] private InputActionReference movmentController;
-    [SerializeField] private InputActionReference jumpController;
-    [SerializeField]private CharacterController controller;
+    [SerializeField] private InputActionReference lookController;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private Animator animatorController;
 
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -20,13 +22,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         movmentController.action.Enable();
-        jumpController.action.Enable();
+        lookController.action.Enable();
     }
 
     private void OnDisable()
     {
         movmentController.action.Disable();
-        jumpController.action.Disable();
+        lookController.action.Disable();
     }
     private void Start()
     {
@@ -44,24 +46,16 @@ public class PlayerController : MonoBehaviour
         }
 
         Vector2 movment = movmentController.action.ReadValue<Vector2>();
+        Vector2 mousePos = lookController.action.ReadValue<Vector2>();
         Vector3 move = new Vector3(movment.x,0,movment.y);
+
         move = MainCamera.forward * move.z + MainCamera.right* move.x;
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
-
-        if (jumpController.action.triggered && groundedPlayer)
-        {
-            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
-
-        playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-        if(movment != Vector2.zero)
-        {
-            float targetangle = Mathf.Atan2(movment.x,movment.y) * Mathf.Rad2Deg + MainCamera.eulerAngles.y;
-            Quaternion rotation = Quaternion.Euler(0f,targetangle,0f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * RotationSpeed);
-        }
+
+        animatorController.SetFloat("x", movment.x,SmoorhBlend, Time.deltaTime);
+        animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
     }
 }
