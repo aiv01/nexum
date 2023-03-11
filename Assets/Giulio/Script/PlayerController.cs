@@ -2,22 +2,25 @@ using UnityEngine.InputSystem;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float SmoorhBlend = 0.1f;
     [SerializeField] private float sensitivity = .5f; 
+    [SerializeField] private float turnSpeed = 10f; 
    
     [SerializeField] private InputActionReference movmentController;
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animatorController;
+    [SerializeField] private Transform MainCamera;
 
-    private Vector3 playerVelocity;
-    private bool groundedPlayer;
-    private Transform MainCamera;
-
-
+    private Vector3 PlayerVelocity;
+    private Vector3 DirectionTarget;
+    private Quaternion Rotation_;
+    private float TurnSpeedMulti;
+    bool ForwardUse = false;
 
     private void OnEnable()
     {
@@ -38,22 +41,49 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 movment = movmentController.action.ReadValue<Vector2>();
         Vector3 move = new Vector3(movment.x,0,movment.y);
-        Vector3 forward = transform.InverseTransformDirection(MainCamera.forward).normalized;
-        Vector3 right = transform.InverseTransformDirection(MainCamera.right).normalized;
+
+        UPDATE_Direction();
+        if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
+        {
+            Vector3 lookDirection = DirectionTarget.normalized;
+            Rotation_ = Quaternion.LookRotation(lookDirection, transform.up);
+            var diferenceRotation = Rotation_.eulerAngles.y - transform.eulerAngles.y;
+            var eulerY = transform.eulerAngles.y;
+
+            if (diferenceRotation < 0 || diferenceRotation > 0) eulerY = Rotation_.eulerAngles.y;
+            var euler = new Vector3(0, eulerY, 0);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * TurnSpeedMulti * Time.deltaTime);
+        }
 
         move = MainCamera.forward * move.z + MainCamera.right* move.x;
         move.y = 0f;
         controller.Move(move * Time.deltaTime * playerSpeed);
-        controller.Move(playerVelocity * Time.deltaTime);
+        controller.Move(PlayerVelocity * Time.deltaTime);
 
-
-        Vector3 forwardRelativeInput = move.x * forward;
-        Vector3 rightRelativeInput = move.y * right;
-        Vector3 cameraRTElativeMovment = forwardRelativeInput + rightRelativeInput;
-
-
-        transform.Translate(cameraRTElativeMovment);
         animatorController.SetFloat("x", movment.x,SmoorhBlend, Time.deltaTime);
         animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
+    }
+
+    void UPDATE_Direction()
+    {
+        Vector2 movment = movmentController.action.ReadValue<Vector2>();
+
+        if (!ForwardUse)
+        {
+            TurnSpeedMulti = 1f;
+            var forward = MainCamera.transform.TransformDirection(Vector3.forward);
+            forward.y = 0;
+            var right = MainCamera.transform.TransformDirection(Vector3.right);
+            DirectionTarget = movment.x * right + movment.y * forward;
+        }
+        else
+        {
+            TurnSpeedMulti = 0.2f;
+            var forward = transform.TransformDirection(Vector3.forward);
+            forward.y = 0;
+            var right = transform.TransformDirection(Vector3.right);
+            DirectionTarget = movment.x * right + Mathf.Abs(movment.y) * forward;
+        }
     }
 }
