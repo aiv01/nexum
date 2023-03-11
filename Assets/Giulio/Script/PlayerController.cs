@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sensitivity = .5f; 
    
     [SerializeField] private InputActionReference movmentController;
-    [SerializeField] private InputActionReference lookController;
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animatorController;
 
@@ -19,16 +18,15 @@ public class PlayerController : MonoBehaviour
     private Transform MainCamera;
 
 
+
     private void OnEnable()
     {
         movmentController.action.Enable();
-        lookController.action.Enable();
     }
 
     private void OnDisable()
     {
         movmentController.action.Disable();
-        lookController.action.Disable();
     }
     private void Start()
     {
@@ -38,16 +36,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        groundedPlayer = controller.isGrounded; 
-
-        if (groundedPlayer && playerVelocity.y < 0)
-        {
-            playerVelocity.y = 0f;
-        }
-
         Vector2 movment = movmentController.action.ReadValue<Vector2>();
-        Vector2 mousePos = lookController.action.ReadValue<Vector2>();
         Vector3 move = new Vector3(movment.x,0,movment.y);
+        Vector3 forward = transform.InverseTransformDirection(MainCamera.forward).normalized;
+        Vector3 right = transform.InverseTransformDirection(MainCamera.right).normalized;
 
         move = MainCamera.forward * move.z + MainCamera.right* move.x;
         move.y = 0f;
@@ -55,6 +47,12 @@ public class PlayerController : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
 
 
+        Vector3 forwardRelativeInput = move.x * forward;
+        Vector3 rightRelativeInput = move.y * right;
+        Vector3 cameraRTElativeMovment = forwardRelativeInput + rightRelativeInput;
+
+
+        transform.Translate(cameraRTElativeMovment);
         animatorController.SetFloat("x", movment.x,SmoorhBlend, Time.deltaTime);
         animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
     }
