@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AllKey",
+                    "type": "Button",
+                    "id": "808ddba9-0157-4490-90a1-53697ae98f11",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -39,7 +48,18 @@
                     "id": "8264a765-f807-4beb-a245-30d8c727aa09",
                     "path": "<Mouse>/position",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
+                    "groups": "",
+                    "action": "MouseLook",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "485109f9-dc77-4592-b9a5-4d5d9044614a",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "ScaleVector2",
                     "groups": "",
                     "action": "MouseLook",
                     "isComposite": false,
@@ -101,6 +121,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "joy",
+                    "id": "a7c07af3-26ed-4b80-8c58-df716c2a37be",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "b8b1be1f-073b-4b04-a6b8-8786c603b261",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "2ed7fbba-a9d3-4e4a-b546-87cfac5d9408",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "825f8644-27af-44e5-a195-35a5bea8a4ad",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b2727903-aef7-4a4c-95e3-2a8d15f03523",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "16fdeb7c-83d2-42b6-9995-92c451f4dea9",
                     "path": "<Keyboard>/space",
@@ -108,6 +183,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7cc0694f-a5df-4691-bf7f-ff24732d98ce",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42c10357-d9e2-45d2-b4e0-af93505204fe",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AllKey",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,8 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.InputSystem.Controls;
-using UnityEngine.Windows;
+using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,9 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float turnSpeed = 10f; 
    
     [SerializeField] private InputActionReference movmentController;
+    [SerializeField] private PlayerController AllKey;
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animatorController;
     [SerializeField] private Transform MainCamera;
+    [SerializeField] private CinemachineVirtualCamera Ellen;
+    [SerializeField] private CinemachineVirtualCamera Robot;
 
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
@@ -22,15 +23,27 @@ public class PlayerController : MonoBehaviour
     private float TurnSpeedMulti;
     bool ForwardUse = false;
 
+    private void Awake()
+    {
+        AllKey = new PlayerController();
+    }
+
     private void OnEnable()
     {
         movmentController.action.Enable();
+        AllKey.enabled= true;
+        SwitchCamera.Register(Ellen);
+        SwitchCamera.Register(Robot);
     }
 
     private void OnDisable()
     {
         movmentController.action.Disable();
+        AllKey.enabled = false;
+        SwitchCamera.UnRegister(Ellen);
+        SwitchCamera.UnRegister(Robot);
     }
+
     private void Start()
     {
         MainCamera = Camera.main.transform;
@@ -63,6 +76,17 @@ public class PlayerController : MonoBehaviour
 
         animatorController.SetFloat("x", movment.x,SmoorhBlend, Time.deltaTime);
         animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
+    }
+
+    private void FixedUpdate()
+    {
+       
+    }
+
+    
+    void Switch()
+    {
+
     }
 
     void UPDATE_Direction()
