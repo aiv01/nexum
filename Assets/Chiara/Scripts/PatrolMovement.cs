@@ -9,7 +9,7 @@ public class PatrolMovement : MonoBehaviour
     private float movementDistance = 2;
 
     [SerializeField]
-    private float idleTimer = 2.0f;
+    private float idleTimer = 4.0f;
     private float currTimer = 0.0f;
 
     private NavMeshAgent agent;
