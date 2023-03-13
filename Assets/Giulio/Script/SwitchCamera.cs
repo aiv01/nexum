@@ -15,7 +15,7 @@ public class SwitchCamera : MonoBehaviour
 
     public static void SwitchCam(CinemachineVirtualCamera cam)
     {
-        cam.Priority = 5;
+        cam.Priority = 10;
         ActiveCamera = cam;
 
         foreach (CinemachineVirtualCamera c in cameras)

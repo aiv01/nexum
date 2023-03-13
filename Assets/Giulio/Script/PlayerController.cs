@@ -9,13 +9,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float sensitivity = .5f; 
     [SerializeField] private float turnSpeed = 10f; 
    
-    [SerializeField] private InputActionReference movmentController;
-    [SerializeField] private PlayerController AllKey;
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animatorController;
     [SerializeField] private Transform MainCamera;
     [SerializeField] private CinemachineVirtualCamera Ellen;
     [SerializeField] private CinemachineVirtualCamera Robot;
+
+    [SerializeField] private InputPlayer PlayerController_;
+
+    private InputAction move_;
+    private InputAction switchPlayer_;
+
 
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
@@ -25,21 +29,28 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        AllKey = new PlayerController();
+        PlayerController_ = new InputPlayer();
     }
 
     private void OnEnable()
     {
-        movmentController.action.Enable();
-        AllKey.enabled= true;
+        move_ = PlayerController_.Player.Movment;
+        move_.Enable();
+
+        switchPlayer_ = PlayerController_.Player.Switch;
+        switchPlayer_.Enable();
+        switchPlayer_.performed += Switch;
+
+
         SwitchCamera.Register(Ellen);
         SwitchCamera.Register(Robot);
     }
 
     private void OnDisable()
     {
-        movmentController.action.Disable();
-        AllKey.enabled = false;
+        move_.Disable();
+        switchPlayer_.Disable();
+
         SwitchCamera.UnRegister(Ellen);
         SwitchCamera.UnRegister(Robot);
     }
@@ -52,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector2 movment = movmentController.action.ReadValue<Vector2>();
+        Vector2 movment = move_.ReadValue<Vector2>();
         Vector3 move = new Vector3(movment.x,0,movment.y);
 
         UPDATE_Direction();
@@ -84,14 +95,25 @@ public class PlayerController : MonoBehaviour
     }
 
     
-    void Switch()
+    void Switch(InputAction.CallbackContext context)
     {
-
+        if(SwitchCamera.IsActiveCam(Ellen))
+        {
+            SwitchCamera.SwitchCam(Robot);
+        }
+        else if(SwitchCamera.IsActiveCam(Robot))
+        {
+            SwitchCamera.SwitchCam(Ellen);
+        }
+        else
+        {
+            Debug.Log("Non riesco a cambiare telecamera con Ellen o il robot");
+        }
     }
 
     void UPDATE_Direction()
     {
-        Vector2 movment = movmentController.action.ReadValue<Vector2>();
+        Vector2 movment = move_.ReadValue<Vector2>();
 
         if (!ForwardUse)
         {

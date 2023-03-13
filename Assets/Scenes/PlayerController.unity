@@ -321,7 +321,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 70
+  field of view: 40
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -347,7 +347,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258595955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.310776, y: 2.5922122, z: -13.418341}
+  m_LocalPosition: {x: 11.981758, y: 1.5627228, z: -10.864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1796,7 +1796,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266153430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9b8a2a2b99f1b47a06c26da7257c56, type: 3}
   m_Name: 
@@ -1805,10 +1805,11 @@ MonoBehaviour:
   SmoorhBlend: 0.1
   sensitivity: 0.5
   turnSpeed: 10
-  movmentController: {fileID: 8905054043963517711, guid: e4f3e79005be0154abc22d768136b017, type: 3}
   controller: {fileID: 1273398293}
   animatorController: {fileID: 1273398292}
   MainCamera: {fileID: 4542285895340150783}
+  Ellen: {fileID: 158830282638566649}
+  Robot: {fileID: 4542285895340150782}
 --- !u!136 &1273398295
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5746,10 +5747,11 @@ MonoBehaviour:
   SmoorhBlend: 0.1
   sensitivity: 0.1
   turnSpeed: 5
-  movmentController: {fileID: 8905054043963517711, guid: e4f3e79005be0154abc22d768136b017, type: 3}
   controller: {fileID: 1889905509146599478}
   animatorController: {fileID: 1889905509146599475}
   MainCamera: {fileID: 158830282638566648}
+  Ellen: {fileID: 158830282638566649}
+  Robot: {fileID: 4542285895340150782}
 --- !u!143 &1889905509146599478
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5958,7 +5960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &4542285895340150782
 MonoBehaviour:
   m_ObjectHideFlags: 0
