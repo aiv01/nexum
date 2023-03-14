@@ -12,14 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private Animator animatorController;
     [SerializeField] private Transform MainCamera;
-    [SerializeField] private CinemachineVirtualCamera Ellen;
-    [SerializeField] private CinemachineVirtualCamera Robot;
-
     [SerializeField] private InputPlayer PlayerController_;
 
     private InputAction move_;
-    private InputAction switchPlayer_;
-
 
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
@@ -36,23 +31,11 @@ public class PlayerController : MonoBehaviour
     {
         move_ = PlayerController_.Player.Movment;
         move_.Enable();
-
-        switchPlayer_ = PlayerController_.Player.Switch;
-        switchPlayer_.Enable();
-        switchPlayer_.performed += Switch;
-
-
-        SwitchCamera.Register(Ellen);
-        SwitchCamera.Register(Robot);
     }
 
     private void OnDisable()
     {
         move_.Disable();
-        switchPlayer_.Disable();
-
-        SwitchCamera.UnRegister(Ellen);
-        SwitchCamera.UnRegister(Robot);
     }
 
     private void Start()
@@ -87,28 +70,6 @@ public class PlayerController : MonoBehaviour
 
         animatorController.SetFloat("x", movment.x,SmoorhBlend, Time.deltaTime);
         animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
-    }
-
-    private void FixedUpdate()
-    {
-       
-    }
-
-    
-    void Switch(InputAction.CallbackContext context)
-    {
-        if(SwitchCamera.IsActiveCam(Ellen))
-        {
-            SwitchCamera.SwitchCam(Robot);
-        }
-        else if(SwitchCamera.IsActiveCam(Robot))
-        {
-            SwitchCamera.SwitchCam(Ellen);
-        }
-        else
-        {
-            Debug.Log("Non riesco a cambiare telecamera con Ellen o il robot");
-        }
     }
 
     void UPDATE_Direction()

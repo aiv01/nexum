@@ -4,36 +4,38 @@ using Cinemachine;
 
 public class SwitchCamera : MonoBehaviour
 {
-    [SerializeField] static List<CinemachineVirtualCamera> cameras = new List<CinemachineVirtualCamera>();
-    [SerializeField] public static CinemachineVirtualCamera ActiveCamera = null;
+    static List<CinemachineVirtualCamera> cameras = new List<CinemachineVirtualCamera>();
+    public static CinemachineVirtualCamera ActiveCamera = null;
 
 
-    public static bool IsActiveCam(CinemachineVirtualCamera cam)
+    public static bool IsActiveCam(CinemachineVirtualCamera camera)
     {
-        return cam == ActiveCamera;
+        return camera == ActiveCamera;
     }
 
-    public static void SwitchCam(CinemachineVirtualCamera cam)
+    public static void SwitchCam(CinemachineVirtualCamera camera)
     {
-        cam.Priority = 10;
-        ActiveCamera = cam;
+        camera.Priority = 10;
+        ActiveCamera = camera;
 
         foreach (CinemachineVirtualCamera c in cameras)
         {
-            if(c != cam && c.Priority != 0)
+            if(c != camera && c.Priority != 0)
             {
                 c.Priority = 0;
             }
         }
     }
     
-    public static void Register(CinemachineVirtualCamera cam)
+    public static void Register(CinemachineVirtualCamera camera)
     {
-        cameras.Add(cam);
+        cameras.Add(camera);
+        Debug.Log("cam registrata" + camera); 
     }
 
-    public static void UnRegister(CinemachineVirtualCamera cam)
+    public static void UnRegister(CinemachineVirtualCamera camera)
     {
-        cameras.Remove(cam);
+        cameras.Remove(camera);
+        Debug.Log("cam rimossa" + camera);
     }
 }
