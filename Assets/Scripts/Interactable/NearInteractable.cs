@@ -14,10 +14,7 @@ public class NearInteractable : MonoBehaviour
     UnityEvent reset;
 
     [SerializeField]
-    [Tooltip("Impostare il valore a negativo per evitare il reset")]
     float resetTime;
-
-    private float currResetTime  = 0f;
     public void Activate()
     {
         Debug.Log("Interacted");
@@ -25,23 +22,17 @@ public class NearInteractable : MonoBehaviour
         interacted.Invoke();
 
         if (resetTime > 0)
-            currResetTime = resetTime;
+            StartCoroutine(ResetAtTime());
 
     }
-    private void Update()
+
+    IEnumerator ResetAtTime()
     {
-        if (resetTime <= 0) return;
-        if (currResetTime <= 0) return;
-
-        currResetTime -= Time.deltaTime;
-        if (currResetTime <= 0)
-        {
-            Debug.Log("Reset");
-            reset.Invoke();
-            GetComponent<Collider>().enabled = true;
-        }
+        yield return new WaitForSeconds(resetTime);
+        Debug.Log("Reset");
+        reset.Invoke();
+        GetComponent<Collider>().enabled = true;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
