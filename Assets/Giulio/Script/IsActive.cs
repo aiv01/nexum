@@ -24,6 +24,7 @@ public class IsActive : MonoBehaviour
     {
         SwitchCamera.Register(Ellen);
         SwitchCamera.Register(Robot);
+        SwitchCamera.SwitchCam(Ellen);
 
         switchPlayer_ = Key.Player.Switch;
         switchPlayer_.Enable();
@@ -39,7 +40,7 @@ public class IsActive : MonoBehaviour
 
     private void Switch(InputAction.CallbackContext callbackContext)
     {
-        if (SwitchCamera.IsActiveCam(Ellen) && IsOperativeEllen)
+        if (SwitchCamera.IsActiveCam(Ellen))
         {
             EllenController.enabled = false;
             RobotController.enabled = true;
