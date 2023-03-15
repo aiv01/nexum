@@ -28,15 +28,6 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
             ""id"": ""6330cf86-6cde-422b-858f-f19fa360679f"",
             ""actions"": [
                 {
-                    ""name"": ""MouseLook"",
-                    ""type"": ""Value"",
-                    ""id"": ""7d01587a-fbd8-42fd-8f5e-06615776067b"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Movment"",
                     ""type"": ""Value"",
                     ""id"": ""1722775a-684a-4d4a-8dfd-f7535196cb9d"",
@@ -65,28 +56,6 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""8264a765-f807-4beb-a245-30d8c727aa09"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=0.1,y=0.1)"",
-                    ""groups"": """",
-                    ""action"": ""MouseLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""485109f9-dc77-4592-b9a5-4d5d9044614a"",
-                    ""path"": ""<Joystick>/stick"",
-                    ""interactions"": """",
-                    ""processors"": ""ScaleVector2"",
-                    ""groups"": """",
-                    ""action"": ""MouseLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""wasd"",
                     ""id"": ""2d02e029-19e3-41da-89c5-2ec50834d74c"",
@@ -229,6 +198,56 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                     ""action"": ""Switch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45c846bc-fa49-4844-9d7a-08d688693f82"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Switch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""camera"",
+            ""id"": ""065a4762-edf1-44bc-b997-409641706147"",
+            ""actions"": [
+                {
+                    ""name"": ""Mouse/Controller"",
+                    ""type"": ""Value"",
+                    ""id"": ""6f32adcf-a337-4cd8-a7aa-0713a6435cfe"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""00cf1eda-3679-422f-8f88-5fda9e46ccfa"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=5,y=5)"",
+                    ""groups"": """",
+                    ""action"": ""Mouse/Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a528496-8181-455c-8f55-980d5cc6201d"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse/Controller"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -237,10 +256,12 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_MouseLook = m_Player.FindAction("MouseLook", throwIfNotFound: true);
         m_Player_Movment = m_Player.FindAction("Movment", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Switch = m_Player.FindAction("Switch", throwIfNotFound: true);
+        // camera
+        m_camera = asset.FindActionMap("camera", throwIfNotFound: true);
+        m_camera_MouseController = m_camera.FindAction("Mouse/Controller", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -300,7 +321,6 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_MouseLook;
     private readonly InputAction m_Player_Movment;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Switch;
@@ -308,7 +328,6 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
     {
         private @InputPlayer m_Wrapper;
         public PlayerActions(@InputPlayer wrapper) { m_Wrapper = wrapper; }
-        public InputAction @MouseLook => m_Wrapper.m_Player_MouseLook;
         public InputAction @Movment => m_Wrapper.m_Player_Movment;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Switch => m_Wrapper.m_Player_Switch;
@@ -321,9 +340,6 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @MouseLook.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseLook;
-                @MouseLook.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseLook;
-                @MouseLook.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseLook;
                 @Movment.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovment;
                 @Movment.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovment;
                 @Movment.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovment;
@@ -337,9 +353,6 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @MouseLook.started += instance.OnMouseLook;
-                @MouseLook.performed += instance.OnMouseLook;
-                @MouseLook.canceled += instance.OnMouseLook;
                 @Movment.started += instance.OnMovment;
                 @Movment.performed += instance.OnMovment;
                 @Movment.canceled += instance.OnMovment;
@@ -353,11 +366,47 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // camera
+    private readonly InputActionMap m_camera;
+    private ICameraActions m_CameraActionsCallbackInterface;
+    private readonly InputAction m_camera_MouseController;
+    public struct CameraActions
+    {
+        private @InputPlayer m_Wrapper;
+        public CameraActions(@InputPlayer wrapper) { m_Wrapper = wrapper; }
+        public InputAction @MouseController => m_Wrapper.m_camera_MouseController;
+        public InputActionMap Get() { return m_Wrapper.m_camera; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CameraActions set) { return set.Get(); }
+        public void SetCallbacks(ICameraActions instance)
+        {
+            if (m_Wrapper.m_CameraActionsCallbackInterface != null)
+            {
+                @MouseController.started -= m_Wrapper.m_CameraActionsCallbackInterface.OnMouseController;
+                @MouseController.performed -= m_Wrapper.m_CameraActionsCallbackInterface.OnMouseController;
+                @MouseController.canceled -= m_Wrapper.m_CameraActionsCallbackInterface.OnMouseController;
+            }
+            m_Wrapper.m_CameraActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @MouseController.started += instance.OnMouseController;
+                @MouseController.performed += instance.OnMouseController;
+                @MouseController.canceled += instance.OnMouseController;
+            }
+        }
+    }
+    public CameraActions @camera => new CameraActions(this);
     public interface IPlayerActions
     {
-        void OnMouseLook(InputAction.CallbackContext context);
         void OnMovment(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnSwitch(InputAction.CallbackContext context);
+    }
+    public interface ICameraActions
+    {
+        void OnMouseController(InputAction.CallbackContext context);
     }
 }

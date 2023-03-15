@@ -1,6 +1,5 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using Cinemachine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,11 +12,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animatorController;
     [SerializeField] private Transform MainCamera;
     [SerializeField] private InputPlayer PlayerController_;
+    [SerializeField] private AnimationClip Idle;
 
+    private Animation Ani;
     private InputAction move_;
 
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
+    private Vector3 move;
+    private Vector2 movment;
     private Quaternion Rotation_;
     private float TurnSpeedMulti;
     bool ForwardUse = false;
@@ -25,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         PlayerController_ = new InputPlayer();
+        Ani = GetComponent<Animation>();
     }
 
     private void OnEnable()
@@ -46,9 +50,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        Vector2 movment = move_.ReadValue<Vector2>();
-        Vector3 move = new Vector3(movment.x,0,movment.y);
-
+        movment = move_.ReadValue<Vector2>();
+        move = new Vector3(movment.x, 0, movment.y);
+            
         UPDATE_Direction();
         if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
         {
@@ -65,12 +69,17 @@ public class PlayerController : MonoBehaviour
 
         move = MainCamera.forward * move.z + MainCamera.right* move.x;
         move.y = 0f;
+    
         controller.Move(move * Time.deltaTime * playerSpeed);
         controller.Move(PlayerVelocity * Time.deltaTime);
 
-        animatorController.SetFloat("x", movment.x,SmoorhBlend, Time.deltaTime);
+         
+        animatorController.SetFloat("x", movment.x, SmoorhBlend, Time.deltaTime);
         animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
+  
+        
     }
+
 
     void UPDATE_Direction()
     {
@@ -93,4 +102,5 @@ public class PlayerController : MonoBehaviour
             DirectionTarget = movment.x * right + Mathf.Abs(movment.y) * forward;
         }
     }
+
 }

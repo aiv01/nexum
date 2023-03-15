@@ -1,19 +1,20 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public class IsActive : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera Ellen;
     [SerializeField] private CinemachineVirtualCamera Robot;
-    [SerializeField] private InputPlayer Key;
     [SerializeField] private PlayerController EllenController;
+    [SerializeField] private Animator EllenAnim;
     [SerializeField] private PlayerController RobotController;
-    [SerializeField] public bool IsOperativeEllen = true;
-    [SerializeField] public bool IsOperativeRobot = false;
+    [SerializeField] private Animator RobotAnim;
+
+    [SerializeField] private InputPlayer Key;
 
     private InputAction switchPlayer_;
-
 
     private void Awake()
     {
@@ -43,18 +44,22 @@ public class IsActive : MonoBehaviour
         if (SwitchCamera.IsActiveCam(Ellen))
         {
             EllenController.enabled = false;
+            EllenAnim.SetFloat("x", 0);
+            EllenAnim.SetFloat("y", 0);
             RobotController.enabled = true;
             SwitchCamera.SwitchCam(Robot);
+           
         }
         else if (SwitchCamera.IsActiveCam(Robot))
         {
-            EllenController.enabled = true;
             RobotController.enabled = false;
+            //RobotAnim.GetComponent<Animator>().enabled = false;
+            //EllenAnim.GetComponent<Animator>().enabled = true;
+            RobotAnim.SetFloat("x", 0);
+            RobotAnim.SetFloat("y", 0);
+            EllenController.enabled = true;
             SwitchCamera.SwitchCam(Ellen);
         }
-        else
-        {
-            Debug.Log("Non riesco a cambiare telecamera con Ellen o il robot");
-        }
+ 
      }
 }

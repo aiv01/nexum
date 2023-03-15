@@ -6,15 +6,6 @@
             "id": "6330cf86-6cde-422b-858f-f19fa360679f",
             "actions": [
                 {
-                    "name": "MouseLook",
-                    "type": "Value",
-                    "id": "7d01587a-fbd8-42fd-8f5e-06615776067b",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Movment",
                     "type": "Value",
                     "id": "1722775a-684a-4d4a-8dfd-f7535196cb9d",
@@ -43,28 +34,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "8264a765-f807-4beb-a245-30d8c727aa09",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "ScaleVector2(x=0.1,y=0.1)",
-                    "groups": "",
-                    "action": "MouseLook",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "485109f9-dc77-4592-b9a5-4d5d9044614a",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "ScaleVector2",
-                    "groups": "",
-                    "action": "MouseLook",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "wasd",
                     "id": "2d02e029-19e3-41da-89c5-2ec50834d74c",
@@ -205,6 +174,56 @@
                     "processors": "",
                     "groups": "",
                     "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45c846bc-fa49-4844-9d7a-08d688693f82",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "camera",
+            "id": "065a4762-edf1-44bc-b997-409641706147",
+            "actions": [
+                {
+                    "name": "Mouse/Controller",
+                    "type": "Value",
+                    "id": "6f32adcf-a337-4cd8-a7aa-0713a6435cfe",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "00cf1eda-3679-422f-8f88-5fda9e46ccfa",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=5,y=5)",
+                    "groups": "",
+                    "action": "Mouse/Controller",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a528496-8181-455c-8f55-980d5cc6201d",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Mouse/Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
