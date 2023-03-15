@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9121074811009189622
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewSwitch_Mat_Off
+  m_Name: NewPressurPlatePressed_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 4f8e2b6cf17d3b04ca824ca44f846f8a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -20,12 +33,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 312f90622b0856541945331b8a97fa50, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Albedo_Tex:
-        m_Texture: {fileID: 2800000, guid: 312f90622b0856541945331b8a97fa50, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49f32916475b49f4fa8e72d20204f4f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -53,14 +62,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive_Mask:
-        m_Texture: {fileID: 2800000, guid: 7d34bf206bff3ff4f99ae6b7a5bd9b0d, type: 3}
+        m_Texture: {fileID: 2800000, guid: c8f41021c9aeeb24195627f876874c9f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Metallic:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -69,15 +74,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic_Smooth:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal:
-        m_Texture: {fileID: 2800000, guid: e1b5e1430f0435f45bc33efdc4422f2c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 62a3d8c215d005848be7eb577ba3b549, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal_Tex:
-        m_Texture: {fileID: 2800000, guid: e1b5e1430f0435f45bc33efdc4422f2c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 62cd1a3b8454b6e4293c779fbc4b99e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -85,15 +86,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Occlusion_Tex:
-        m_Texture: {fileID: 2800000, guid: 3553f20c380eef441b8e39a2c9540e21, type: 3}
+        m_Texture: {fileID: 2800000, guid: 13094132725242a4eb54aed90ec928c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_7ca51bcd09514d2f8326b53ffc1ecd72_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 312f90622b0856541945331b8a97fa50, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -140,9 +137,8 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Is_Active: 0
+    - _Is_Active: 1
     - _Metallic: 0
-    - _NormalStrenght: 1
     - _Normal_Strenght: 1
     - _OcclusionStrength: 1
     - _Occlusion_Strenght: 0.679
@@ -150,7 +146,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.75
+    - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -158,17 +154,14 @@ Material:
     - _Top_Layer_Detail_Str: 0.25
     - _Top_Layer_Normal_Str: 0.3
     - _Top_Layer_Normal_Strenght: 1
-    - _Top_Layer_Strenght: 1
+    - _Top_Layer_Strenght: 0.25
     - _Use_Mask: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _Albedo_Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Albedo_Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emissive: {r: 0.1098039, g: 1.129412, b: 4, a: 1}
     - _Emissive_Active: {r: 0.1098039, g: 1.129412, b: 4, a: 1}
     - _Emissive_Inactive: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
@@ -179,16 +172,3 @@ Material:
     - _Top_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Top_Tiling: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &6457491040633217259
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 5
