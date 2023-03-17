@@ -7,6 +7,7 @@ TagManager:
   - Human
   - Robot
   - Goal
+  - Interactable
   layers:
   - Default
   - TransparentFX
@@ -28,11 +29,11 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Huma
+  - Robot
+  - HumanInteractable
+  - RobotInteractable
+  - BothInteractable
   - 
   - 
   - 

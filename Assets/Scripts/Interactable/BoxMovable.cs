@@ -8,10 +8,16 @@ public class BoxMovable : Interactable
 {
     private bool isPushing = false;
 
-    private PlayerController player;
+    private CharacterController player;
+
+    private Rigidbody myRB;
 
     [SerializeField]
     private Transform[] possiblePlayerLocation;
+    private void Awake()
+    {
+        myRB = GetComponent<Rigidbody>();
+    }
 
     public override void Interact()
     {
@@ -41,19 +47,21 @@ public class BoxMovable : Interactable
     {
         if (isPushing)
         {
-            //TODO: Sposta il blocco
+            myRB.velocity = player.velocity;
         }
     }
 
-    //protected override void OnCustomTriggerEnter(Collider other)
-    //{
-    //    base.OnCustomTriggerEnter(other);
-    //    player = other.GetComponent<PlayerController>();
-    //}
+    protected override void OnCustomTriggerEnter(Collider other)
+    {
+        base.OnCustomTriggerEnter(other);
+        if (player == null)
+            player = other.GetComponent<CharacterController>();
+    }
 
-    //protected override void OnCustomTriggerExit(Collider other)
-    //{
-    //    player = null;
-    //    base.OnCustomTriggerExit(other);
-    //}
+    protected override void OnCustomTriggerExit(Collider other)
+    {
+        if (!isPushing)
+            player = null;
+        base.OnCustomTriggerExit(other);
+    }
 }

@@ -5,18 +5,19 @@ using UnityEngine;
 namespace ValvolaTest
 {
     [DisallowMultipleComponent]
-    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
-        private float speed;
+        private float speed = .05f;
 
-        private Collider myCollider;
+        private CharacterController myCC;
+
 
         public bool isActivePlayer;
         private void Awake()
         {
-            myCollider = GetComponent<Collider>();
+            myCC = GetComponent<CharacterController>();
             isActivePlayer = false;
         }
 
@@ -24,7 +25,7 @@ namespace ValvolaTest
 
         public void Move(Vector3 direction)
         {
-            transform.position += direction;
+            myCC.SimpleMove(direction * speed);
         }
         public void TryToInteract()
         {
