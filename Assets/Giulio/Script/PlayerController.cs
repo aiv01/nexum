@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animatorController;
     [SerializeField] private Transform MainCamera;
     [SerializeField] private InputPlayer PlayerController_;
-    [SerializeField] private AnimationClip Idle;
 
     private Animation Ani;
     private InputAction move_;
