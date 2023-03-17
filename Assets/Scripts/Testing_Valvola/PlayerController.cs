@@ -35,14 +35,14 @@ public class PlayerController : MonoBehaviour
             interaction = () => { };
         }
     }
-    public void AddInteraction(NearInteractable other)
+    public void AddInteraction(Interactable other)
     {
-        interaction += other.Activate;
+        interaction += other.Interact;
     }
 
-    public void RemoveInteraction(NearInteractable other)
+    public void RemoveInteraction(Interactable other)
     {
-        interaction -= other.Activate;
+        interaction -= other.Interact;
     }
 
 }

@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(Collider))]
-public class NearInteractable : MonoBehaviour
+public class NearInteractable : Interactable
 {
     [SerializeField]
     UnityEvent interacted;
@@ -15,7 +14,8 @@ public class NearInteractable : MonoBehaviour
 
     [SerializeField]
     float resetTime;
-    public void Activate()
+
+    public override void Interact()
     {
         Debug.Log("Interacted");
         GetComponent<Collider>().enabled = false;
@@ -23,9 +23,7 @@ public class NearInteractable : MonoBehaviour
 
         if (resetTime > 0)
             StartCoroutine(ResetAtTime());
-
     }
-
     IEnumerator ResetAtTime()
     {
         yield return new WaitForSeconds(resetTime);
@@ -34,14 +32,5 @@ public class NearInteractable : MonoBehaviour
         GetComponent<Collider>().enabled = true;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Enter");
-        other.SendMessage("AddInteraction", this, SendMessageOptions.DontRequireReceiver);
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        Debug.Log("Exit");
-        other.SendMessage("RemoveInteraction", this, SendMessageOptions.DontRequireReceiver);
-    }
+
 }
