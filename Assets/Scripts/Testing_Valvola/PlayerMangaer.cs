@@ -3,80 +3,83 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-
-[DisallowMultipleComponent]
-public class PlayerMangaer : MonoBehaviour
+namespace ValvolaTest
 {
-    [SerializeField]
-    PlayerController[] players;
-    private int currentPlayerNum;
-
-    [SerializeField]
-    CinemachineVirtualCamera aimCamera;
-
-    [SerializeField]
-    Transform targetTrasform;
-
-    public bool ControlAim = false;
-
-    PlayerController currentPlayer
+    [DisallowMultipleComponent]
+    public class PlayerMangaer : MonoBehaviour
     {
-        get { return players[currentPlayerNum]; }
-    }
+        [SerializeField]
+        PlayerController[] players;
+        private int currentPlayerNum;
 
-    private void Start()
-    {
-        currentPlayerNum = 0;
-        currentPlayer.isActivePlayer = true;
-    }
+        [SerializeField]
+        CinemachineVirtualCamera aimCamera;
 
-    private void Update()
-    {
-        Vector3 moveDir = Vector3.zero;
+        [SerializeField]
+        Transform targetTrasform;
 
-        moveDir += transform.right * Input.GetAxis("Vertical") * -1;
-        moveDir += transform.forward * Input.GetAxis("Horizontal");
+        public bool ControlAim = false;
 
-        moveDir = moveDir.sqrMagnitude > 1 ? moveDir.normalized : moveDir;
-        currentPlayer.Move(moveDir);
-
-        if (Input.GetKeyDown(KeyCode.RightControl))
-            SwitchPlayer();
-
-        if (Input.GetKeyDown(KeyCode.E))
-            currentPlayer.TryToInteract();
-
-        if (ControlAim)
+        PlayerController currentPlayer
         {
-            if (Input.GetMouseButton(1))
-                Aim();
-            else
-                aimCamera.Priority = 0;
+            get { return players[currentPlayerNum]; }
         }
-    }
-    
-    private void Aim()
-    {
-        aimCamera.Priority = 11;
 
-        if (Input.GetMouseButtonDown(0))
+        private void Start()
         {
-            Debug.Log("Shoot");
-            var ray = Camera.main.ViewportPointToRay(Vector2.one * .5f);
-            Debug.DrawRay(ray.origin, ray.direction * 10, Color.green, 5);
+            currentPlayerNum = 0;
+            currentPlayer.isActivePlayer = true;
+        }
 
-            RaycastHit hitFo;
-            if (Physics.Raycast(ray, out hitFo, 10f)){
-                hitFo.collider.SendMessage("Hit", null, SendMessageOptions.DontRequireReceiver);
+        private void Update()
+        {
+            Vector3 moveDir = Vector3.zero;
+
+            moveDir += transform.right * Input.GetAxis("Vertical") * -1;
+            moveDir += transform.forward * Input.GetAxis("Horizontal");
+
+            moveDir = moveDir.sqrMagnitude > 1 ? moveDir.normalized : moveDir;
+            currentPlayer.Move(moveDir);
+
+            if (Input.GetKeyDown(KeyCode.RightControl))
+                SwitchPlayer();
+
+            if (Input.GetKeyDown(KeyCode.E))
+                currentPlayer.TryToInteract();
+
+            if (ControlAim)
+            {
+                if (Input.GetMouseButton(1))
+                    Aim();
+                else
+                    aimCamera.Priority = 0;
             }
         }
 
-    }
-    private void SwitchPlayer()
-    {
-        currentPlayer.isActivePlayer = false;
-        currentPlayerNum += 1;
-        currentPlayerNum = currentPlayerNum % players.Length;
-        currentPlayer.isActivePlayer = true;
+        private void Aim()
+        {
+            aimCamera.Priority = 11;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Shoot");
+                var ray = Camera.main.ViewportPointToRay(Vector2.one * .5f);
+                Debug.DrawRay(ray.origin, ray.direction * 10, Color.green, 5);
+
+                RaycastHit hitFo;
+                if (Physics.Raycast(ray, out hitFo, 10f))
+                {
+                    hitFo.collider.SendMessage("Hit", null, SendMessageOptions.DontRequireReceiver);
+                }
+            }
+
+        }
+        private void SwitchPlayer()
+        {
+            currentPlayer.isActivePlayer = false;
+            currentPlayerNum += 1;
+            currentPlayerNum = currentPlayerNum % players.Length;
+            currentPlayer.isActivePlayer = true;
+        }
     }
 }

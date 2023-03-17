@@ -2,47 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[DisallowMultipleComponent]
-[RequireComponent(typeof(Collider))]
-public class PlayerController : MonoBehaviour
+namespace ValvolaTest
 {
-    [SerializeField]
-    private float speed;
-
-    private Collider myCollider;
-
-    public bool isActivePlayer;
-    private void Awake()
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(Collider))]
+    public class PlayerController : MonoBehaviour
     {
-        myCollider = GetComponent<Collider>();
-        isActivePlayer = false;
-    }
-    public void Move(Vector3 direction)
-    {
-        transform.Translate(direction * speed * Time.deltaTime);
-    }
+        [SerializeField]
+        private float speed;
 
-    private System.Action interaction;
+        private Collider myCollider;
 
-    public void TryToInteract()
-    {
-        if (interaction == null) return;
-
-        if (interaction.GetInvocationList().Length > 0)
+        public bool isActivePlayer;
+        private void Awake()
         {
-            interaction.Invoke();
-            interaction = () => { };
+            myCollider = GetComponent<Collider>();
+            isActivePlayer = false;
         }
-    }
-    public void AddInteraction(Interactable other)
-    {
-        interaction += other.Interact;
-    }
+        public void Move(Vector3 direction)
+        {
+            transform.Translate(direction * speed * Time.deltaTime);
+        }
 
-    public void RemoveInteraction(Interactable other)
-    {
-        interaction -= other.Interact;
-    }
+        private System.Action interaction;
 
+        public void TryToInteract()
+        {
+            if (interaction == null) return;
+
+            if (interaction.GetInvocationList().Length > 0)
+            {
+                interaction.Invoke();
+                interaction = () => { };
+            }
+        }
+        public void AddInteraction(Interactable other)
+        {
+            interaction += other.Interact;
+        }
+
+        public void RemoveInteraction(Interactable other)
+        {
+            interaction -= other.Interact;
+        }
+
+    }
 }
