@@ -19,13 +19,13 @@ namespace ValvolaTest
             myCollider = GetComponent<Collider>();
             isActivePlayer = false;
         }
-        public void Move(Vector3 direction)
-        {
-            transform.Translate(direction * speed * Time.deltaTime);
-        }
 
         private System.Action interaction;
 
+        public void Move(Vector3 direction)
+        {
+            transform.position += direction;
+        }
         public void TryToInteract()
         {
             if (interaction == null) return;
@@ -40,7 +40,6 @@ namespace ValvolaTest
         {
             interaction += other.Interact;
         }
-
         public void RemoveInteraction(Interactable other)
         {
             interaction -= other.Interact;
