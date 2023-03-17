@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[DisallowMultipleComponent]
 [RequireComponent(typeof(Animator))]
 public class EnemyAttack : MonoBehaviour
 {
@@ -12,59 +11,61 @@ public class EnemyAttack : MonoBehaviour
     public AttackEvent attackEvent;
 
     [SerializeField]
-    private Transform target; //temporary, modify to detect player on its own
-
-    [SerializeField]
-    private float targetDistance = 4.0f;
-    private float sqrTargetDistance;
-
-    [SerializeField]
     private float attackTimer = 3.0f;
     private float currTimer = 0.0f;
 
-    private bool isAttacking = false;
+    private Transform target = null;
 
     private Animator animator;
+    private int moveAnimIndex;
+    private int attackAnimIndex;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         attackEvent.AddListener(Attack);
-        sqrTargetDistance = targetDistance * targetDistance;
+
+        foreach (var param in animator.parameters)
+        {
+            if (param.name == "IsMoving")
+                moveAnimIndex = param.nameHash;
+            if (param.name == "Attack")
+                attackAnimIndex = param.nameHash;
+        }
     }
 
     private void Update()
     {
         currTimer += Time.deltaTime;
-        if(currTimer >= attackTimer)
+        if (currTimer >= attackTimer)
         {
-            if(isAttacking)
-            {
-                attackEvent?.Invoke();
-            }
+            attackEvent?.Invoke();
             currTimer = 0.0f;
         }
-    }
-    private void FixedUpdate()
-    {
-        if((transform.position - target.position).sqrMagnitude < sqrTargetDistance)
-        {
-            isAttacking = true;
-        }
-        else
-        {
-            isAttacking = false;
-        }
-
-        if(isAttacking)
-            transform.LookAt(target, Vector3.up); //if too heavy remove/replace with lighter function
     }
 
     private void Attack()
     {
         if(target != null)
         {
-            animator.SetTrigger("Attack");
+            transform.LookAt(target, Vector3.up);
+            animator.SetTrigger(attackAnimIndex);
         }
+    }
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
+    }
+
+
+    private void OnEnable()
+    {
+        currTimer = 0;
+        transform.LookAt(target, Vector3.up);
+    }
+
+    private void OnDisable()
+    {
+        target = null;
     }
 }
