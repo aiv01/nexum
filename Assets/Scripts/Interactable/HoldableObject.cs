@@ -4,13 +4,16 @@ using UnityEngine;
 
 
 [DisallowMultipleComponent]
-public class BoxMovable : Interactable
+public class HoldableObject : Interactable
 {
-    private bool isPushing = false;
+    private bool isHolding = false;
 
     private CharacterController player;
 
     private Rigidbody myRB;
+
+    [SerializeField]
+    private Vector3 holdOffset = Vector3.up * 2;
 
     [SerializeField]
     private Transform[] possiblePlayerLocation;
@@ -23,9 +26,9 @@ public class BoxMovable : Interactable
     {
         Debug.Log("interact");
 
-        isPushing = !isPushing;
+        isHolding = !isHolding;
 
-        if (isPushing)
+        /*if (isHolding)
         {
             float minDist = 50f;
             Transform realPosition = null;
@@ -39,15 +42,16 @@ public class BoxMovable : Interactable
                 }
             }
 
-            player.transform.position = transform.position;
-        }
+            player.transform.position = realPosition.position;
+        }*/
     }
 
     private void Update()
     {
-        if (isPushing)
+        if (isHolding)
         {
-            myRB.velocity = player.velocity;
+            //myRB.velocity = player.velocity;
+            transform.position = player.transform.position + holdOffset;
         }
     }
 
@@ -60,7 +64,7 @@ public class BoxMovable : Interactable
 
     protected override void OnCustomTriggerExit(Collider other)
     {
-        if (!isPushing)
+        if (!isHolding)
             player = null;
         base.OnCustomTriggerExit(other);
     }
