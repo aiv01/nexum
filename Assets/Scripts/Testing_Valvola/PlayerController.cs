@@ -27,6 +27,11 @@ namespace ValvolaTest
         {
             myCC.SimpleMove(direction * speed);
         }
+
+        public void Rotate(float angle)
+        {
+            transform.Rotate(Vector3.up * angle);
+        }
         public void TryToInteract()
         {
             if (interaction == null) return;

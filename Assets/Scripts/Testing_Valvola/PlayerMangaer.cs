@@ -41,6 +41,8 @@ namespace ValvolaTest
             moveDir = moveDir.sqrMagnitude > 1 ? moveDir.normalized : moveDir;
             currentPlayer.Move(moveDir);
 
+            currentPlayer.Rotate(Input.GetAxis("Horizontal_2" ));
+
             if (Input.GetKeyDown(KeyCode.RightControl))
                 SwitchPlayer();
 
