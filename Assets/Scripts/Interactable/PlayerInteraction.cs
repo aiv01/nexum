@@ -47,7 +47,11 @@ public class PlayerInteraction : MonoBehaviour
     }
     public void AddInteraction(Interactable other)
     {
+
+        interaction -= other.Interact;
         interaction += other.Interact;
+
+
     }
     public void RemoveInteraction(Interactable other)
     {

@@ -1,32 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 [DisallowMultipleComponent]
 public class SceneSwitcher : MonoBehaviour
 {
-    #region Public variables
-    #endregion
+    public int[] scenes;
 
-    #region Private variables
-    #endregion
-    
-    #region Game Loop
-    void Start()
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(this);
     }
-
-    void Update()
+    private void Update()
     {
-        
+        for (int i = 1; i <= scenes.Length; i++)
+        {
+            if (Input.GetKeyDown(i.ToString()))
+                SceneManager.LoadScene(i - 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
-    #endregion
-
-    #region Public methods
-    #endregion
-
-    #region Private methods
-    #endregion
 }

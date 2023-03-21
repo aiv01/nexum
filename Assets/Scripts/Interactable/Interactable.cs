@@ -11,11 +11,11 @@ public abstract class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Enter");
         OnCustomTriggerEnter(other);
     }
     protected virtual void OnCustomTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
         other.SendMessage("AddInteraction", this, SendMessageOptions.DontRequireReceiver);
 
     }
