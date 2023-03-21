@@ -35,12 +35,13 @@ public class HoldableObject : Interactable
 
         isHolding = !isHolding;
         activationCollider.enabled = false;
-
         StartCoroutine(ReactivateCollider());
 
         if (!isHolding)
         {
+            Debug.Log("BUTTO PER TERRA LE COSE");
             transform.position = dropZone.position;
+            visibleDropPosition.transform.position = Vector3.down * -10;
         }
 
         #region old
@@ -66,7 +67,7 @@ public class HoldableObject : Interactable
 
     IEnumerator ReactivateCollider()
     {
-        yield return new WaitForSeconds(.05f);
+        yield return new WaitForSeconds(.5f);
         activationCollider.enabled = true;
     }
 

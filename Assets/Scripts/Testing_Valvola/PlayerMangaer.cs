@@ -35,8 +35,8 @@ namespace ValvolaTest
         {
             Vector3 moveDir = Vector3.zero;
 
-            moveDir += transform.right * Input.GetAxis("Vertical") * -1;
-            moveDir += transform.forward * Input.GetAxis("Horizontal");
+            moveDir += Camera.main.transform.forward * Input.GetAxis("Vertical");
+            moveDir += Camera.main.transform.right * Input.GetAxis("Horizontal");
 
             moveDir = moveDir.sqrMagnitude > 1 ? moveDir.normalized : moveDir;
             currentPlayer.Move(moveDir);

@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New_Crystal_Blue_Mat
+  m_Name: Crystal_Green_Mat
   m_Shader: {fileID: -6465566751694194690, guid: d117e5c96880cfe46a08c5276767a268, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -156,9 +156,9 @@ Material:
     - _Color: {r: 18.164822, g: 0.19020757, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0.9810735, b: 2.433572, a: 0}
     - _EmissiveColor: {r: 0.990566, g: 0, b: 0.029887702, a: 1}
-    - _Emissive_Color: {r: 0, g: 0.9906745, b: 1, a: 0}
-    - _Emissive_Color_2: {r: 0, g: 0.3744383, b: 1, a: 0}
-    - _ExternalColor: {r: 0.09803922, g: 0.3128417, b: 0.8901961, a: 0}
+    - _Emissive_Color: {r: 0.15606391, g: 1, b: 0, a: 0}
+    - _Emissive_Color_2: {r: 0, g: 1, b: 0.19279933, a: 0}
+    - _ExternalColor: {r: 0.09803922, g: 0.8901961, b: 0.14123905, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
