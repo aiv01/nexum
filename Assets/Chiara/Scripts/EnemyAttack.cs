@@ -36,6 +36,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
+        animator.SetBool(moveAnimIndex, false); //temporary, needs fixing
         currTimer += Time.deltaTime;
         if (currTimer >= attackTimer)
         {
@@ -60,7 +61,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnEnable()
     {
-        currTimer = 0;
+        currTimer = attackTimer; //attacks as soon as target is in sight
         transform.LookAt(target, Vector3.up);
     }
 

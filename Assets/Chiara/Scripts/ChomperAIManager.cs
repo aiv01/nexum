@@ -63,7 +63,7 @@ public class ChomperAIManager : MonoBehaviour
             attack.SetTarget(other.transform);
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
         if (hasReachedGoal) return;
         //from any state return to patrol if not at goal position
@@ -71,4 +71,12 @@ public class ChomperAIManager : MonoBehaviour
         attack.enabled = false;
         follow.enabled = false;
     }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (hasReachedGoal) return;
+    //    //from any state return to patrol if not at goal position
+    //    patrol.enabled = true;
+    //    attack.enabled = false;
+    //    follow.enabled = false;
+    //}
 }
