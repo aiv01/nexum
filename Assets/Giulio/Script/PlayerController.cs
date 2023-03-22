@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     [Header("Jump")]
     [SerializeField] float jumpSpeed = 5f;
     [SerializeField] bool canIJump;
-    private float ySpeed;
+    [SerializeField] float ySpeed;
     private bool isJump;
     private bool isGorund;
     private bool isFalling;
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
             isJump = false;
             animatorController.SetBool("isFalling", false);
             isFalling = false;
+            ySpeed = 0f;
 
             if (PlayerController_.Player.Jump.triggered && canIJump)
             {
@@ -109,12 +110,15 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 lookDirection = DirectionTarget.normalized;
             Rotation_ = Quaternion.LookRotation(lookDirection, transform.up);
-            var diferenceRotation = Rotation_.eulerAngles.y - transform.eulerAngles.y;
+            var DifRotation = Rotation_.eulerAngles.y - transform.eulerAngles.y;
             var eulerY = transform.eulerAngles.y;
 
-            if (diferenceRotation < 0 || diferenceRotation > 0) eulerY = Rotation_.eulerAngles.y;
-            var euler = new Vector3(0, eulerY, 0);
+            if (DifRotation < 0 || DifRotation > 0)
+            {
+                eulerY = Rotation_.eulerAngles.y;
+            }
 
+            var euler = new Vector3(0, eulerY, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(euler), turnSpeed * TurnSpeedMulti * Time.deltaTime);
         }
 
