@@ -80,7 +80,7 @@ public class HoldableObject : Interactable
             transform.rotation = player.transform.rotation;
 
             RaycastHit hitfo;
-            if (Physics.Raycast(dropZone.position, Vector3.down, out hitfo, 50f))
+            if (Physics.Raycast(dropZone.position, Vector3.down, out hitfo, 50f, layerMask: 8))
             {
                 visibleDropPosition.transform.position = hitfo.point;
             }
