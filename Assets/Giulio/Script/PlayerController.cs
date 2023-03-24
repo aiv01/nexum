@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
                 isJump = true;
             }
         }
-        else if (!isGrounded())
+        else
         {
             animatorController.SetBool("isGround", false);
             isGorund = false;
