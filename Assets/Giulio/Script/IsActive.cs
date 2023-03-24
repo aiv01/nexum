@@ -46,6 +46,8 @@ public class IsActive : MonoBehaviour
             EllenController.enabled = false;
             EllenAnim.SetFloat("x", 0);
             EllenAnim.SetFloat("y", 0);
+            EllenAnim.SetBool("isGround", true);
+            EllenAnim.SetBool("isFalling", false);
             RobotController.enabled = true;
             SwitchCamera.SwitchCam(Robot);
            
@@ -53,11 +55,10 @@ public class IsActive : MonoBehaviour
         else if (SwitchCamera.IsActiveCam(Robot))
         {
             RobotController.enabled = false;
-            //RobotAnim.GetComponent<Animator>().enabled = false;
-            //EllenAnim.GetComponent<Animator>().enabled = true;
             RobotAnim.SetFloat("x", 0);
             RobotAnim.SetFloat("y", 0);
             EllenController.enabled = true;
+            
             SwitchCamera.SwitchCam(Ellen);
         }
  
