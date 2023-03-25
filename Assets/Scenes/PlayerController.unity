@@ -5544,8 +5544,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
-  Radius: 0.5
-  MaxDist: 0.17
   jumpSpeed: 8
   canIJump: 1
   ySpeed: 0
@@ -6278,8 +6276,6 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
-  Radius: 0
-  MaxDist: 0
   jumpSpeed: 0
   canIJump: 0
   ySpeed: 0

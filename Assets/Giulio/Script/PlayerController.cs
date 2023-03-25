@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask mask;
 
     [Header("InputPlayer")]
-    [SerializeField]  InputPlayer PlayerController_;
+    InputPlayer PlayerController_;
+    InputActionReference run;
 
     [Header("Jump")]
     [SerializeField] float jumpSpeed = 5f;
@@ -27,9 +28,11 @@ public class PlayerController : MonoBehaviour
     private bool isJump;
     private bool isGorund;
     private bool isFalling;
+    private bool isRun;
 
     private InputAction move_;
     private InputAction jump_;
+    private InputAction run_;
 
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
@@ -49,15 +52,18 @@ public class PlayerController : MonoBehaviour
     {
         move_ = PlayerController_.Player.Movment;
         jump_ = PlayerController_.Player.Jump;
+        run_ = PlayerController_.Player.Run;
 
+        run_.Enable();
         move_.Enable();
-        jump_.Enable();
+        jump_.Enable(); 
     }
 
     private void OnDisable()
     {
         move_.Disable();
-        jump_.Disable();
+        jump_.Disable(); 
+        run_.Disable();
     }
 
     private void Start()
@@ -106,6 +112,17 @@ public class PlayerController : MonoBehaviour
             isFalling = true;
         }
 
+        if(PlayerController_.Player.Run.triggered)
+        {
+            animatorController.SetBool("isRun", true);
+            isRun = true;
+        } 
+        else
+        {
+            animatorController.SetBool("isRun", false);
+            isRun = false;
+        }
+
         if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
         {
             Vector3 lookDirection = DirectionTarget.normalized;
@@ -125,6 +142,7 @@ public class PlayerController : MonoBehaviour
         move = MainCamera.forward * move.z + MainCamera.right * move.x;
         move.y = ySpeed;
 
+
         controller.Move(move * Time.deltaTime * playerSpeed);
         controller.Move(PlayerVelocity * Time.deltaTime);
 
@@ -135,6 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         return Physics.Raycast(transform.position,-Vector3.up,.1f,mask);
     }
+    
 
     void UPDATE_Direction()
     {

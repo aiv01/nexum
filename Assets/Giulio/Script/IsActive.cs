@@ -47,6 +47,7 @@ public class IsActive : MonoBehaviour
             EllenAnim.SetFloat("x", 0);
             EllenAnim.SetFloat("y", 0);
             EllenAnim.SetBool("isGround", true);
+            EllenAnim.SetBool("isJump", false);
             EllenAnim.SetBool("isFalling", false);
             RobotController.enabled = true;
             SwitchCamera.SwitchCam(Robot);
