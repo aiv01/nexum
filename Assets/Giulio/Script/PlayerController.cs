@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movment")]
     [SerializeField]  float playerSpeed = 2.0f;
-    [SerializeField]  float SmoorhBlend = 0.1f;
+    [SerializeField]  float SmoothBlend = 0.1f;
     [SerializeField]  float sensitivity = 0.5f; 
     [SerializeField]  float turnSpeed = 10f;
     [SerializeField]  float groundDrag = 3f;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
     private Vector3 move;
-    private Vector2 movment;
+    private Vector2 movement;
     private Quaternion Rotation_;
     private float TurnSpeedMulti;
     bool ForwardUse = false;
@@ -73,8 +73,10 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        movment = move_.ReadValue<Vector2>();
-        move = new Vector3(movment.x, 0, movment.y);
+        movement = move_.ReadValue<Vector2>();
+        if (movement.sqrMagnitude < 0.1)
+            movement = Vector2.zero;
+        move = new Vector3(movement.x, 0, movement.y);
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
         UPDATE_Direction();
@@ -106,7 +108,7 @@ public class PlayerController : MonoBehaviour
             isFalling = true;
         }
 
-        if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
+        if (movement != Vector2.zero && DirectionTarget.magnitude > 0.1f)
         {
             Vector3 lookDirection = DirectionTarget.normalized;
             Rotation_ = Quaternion.LookRotation(lookDirection, transform.up);
@@ -128,8 +130,16 @@ public class PlayerController : MonoBehaviour
         controller.Move(move * Time.deltaTime * playerSpeed);
         controller.Move(PlayerVelocity * Time.deltaTime);
 
-        animatorController.SetFloat("x", movment.x, SmoorhBlend, Time.deltaTime);
-        animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
+        if(Mathf.Abs(movement.x) > 0.0000001f || Mathf.Abs(movement.y) > 0.0000001f)
+        {
+            animatorController.SetFloat("x", movement.x, SmoothBlend, Time.deltaTime);
+            animatorController.SetFloat("y", movement.y, SmoothBlend, Time.deltaTime);
+        }
+        else
+        {
+            animatorController.SetFloat("x", movement.x);
+            animatorController.SetFloat("y", movement.y);
+        }
     }
     bool isGrounded()
     {

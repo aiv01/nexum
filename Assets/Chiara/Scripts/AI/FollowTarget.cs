@@ -46,6 +46,7 @@ public class FollowTarget : MonoBehaviour
             }
         }
         animator.SetBool(moveAnimIndex, agent.velocity != Vector3.zero);
+        Debug.Log("Update follow " + gameObject.name);
     }
 
     public void SetTarget(Transform newTarget, bool isGoal = false)
