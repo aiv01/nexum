@@ -22,13 +22,9 @@ public class PlayerController : MonoBehaviour
     InputActionReference run;
 
     [Header("Jump")]
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float jumpSpeed;
     [SerializeField] bool canIJump;
     [SerializeField] float ySpeed;
-    private bool isJump;
-    private bool isGorund;
-    private bool isFalling;
-    private bool isRun;
 
     private InputAction move_;
     private InputAction jump_;
@@ -81,47 +77,35 @@ public class PlayerController : MonoBehaviour
     {
         movment = move_.ReadValue<Vector2>();
         move = new Vector3(movment.x, 0, movment.y);
-        ySpeed += Physics.gravity.y * Time.deltaTime;
+        ySpeed += (Physics.gravity.y * Time.deltaTime);
 
         UPDATE_Direction();
 
         if(isGrounded()) //jump
         {
             animatorController.SetBool("isGround", true);
-            isGorund = true;
             animatorController.SetBool("isJump", false);
-            isJump = false;
             animatorController.SetBool("isFalling", false);
-            isFalling = false;
             ySpeed = 0f;
 
             if (PlayerController_.Player.Jump.triggered && canIJump)
             {
                 ySpeed = jumpSpeed;
                 animatorController.SetBool("isJump", true);
-                isJump = true;
             }
         }
         else
         {
             animatorController.SetBool("isGround", false);
-            isGorund = false;
             animatorController.SetBool("isJump", false);
-            isJump = false;
             animatorController.SetBool("isFalling", true);
-            isFalling = true;
         }
 
         if(PlayerController_.Player.Run.triggered)
         {
             animatorController.SetBool("isRun", true);
-            isRun = true;
         } 
-        else
-        {
-            animatorController.SetBool("isRun", false);
-            isRun = false;
-        }
+
 
         if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
         {
