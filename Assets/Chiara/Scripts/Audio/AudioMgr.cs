@@ -13,14 +13,17 @@ public class AudioMgr : MonoBehaviour
     private AudioClip shoot;
     [SerializeField]
     private AudioClip box;
+    [SerializeField]
+    private AudioClip ambience;
 
     private AudioSource source;
 
     private void Start()
     {
         source = GetComponent<AudioSource>();
+        source.clip = ambience;
+        source.Play();
     }
-
     public void OpenCloseDoor()
     {
         source.PlayOneShot(door);

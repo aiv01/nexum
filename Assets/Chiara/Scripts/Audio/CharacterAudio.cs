@@ -4,7 +4,9 @@ using UnityEngine;
 public class CharacterAudio : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip[] stepClips;
+    private AudioClip[] walkStepClips;
+    [SerializeField]
+    private AudioClip[] runStepClips;
     [SerializeField]
     private AudioClip landClip;
 
@@ -17,7 +19,11 @@ public class CharacterAudio : MonoBehaviour
 
     private void PlayStep()
     {
-        source.PlayOneShot(stepClips[Random.Range(0, stepClips.Length)]);
+        source.PlayOneShot(walkStepClips[Random.Range(0, walkStepClips.Length)]);
+    }
+    private void PlayRunStep()
+    {
+        source.PlayOneShot(runStepClips[Random.Range(0, runStepClips.Length)]);
     }
 
     private void Land()
