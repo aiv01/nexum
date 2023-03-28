@@ -9,6 +9,8 @@ public class RayCastGetColor : MonoBehaviour
     [SerializeField]
     Bullet bullet;
 
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
