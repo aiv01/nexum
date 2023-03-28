@@ -94,17 +94,17 @@ public class PlayerController : MonoBehaviour
                 animatorController.SetBool("isJump", true);
             }
         }
-        else
+        else 
         {
             animatorController.SetBool("isGround", false);
             animatorController.SetBool("isJump", false);
             animatorController.SetBool("isFalling", true);
         }
 
-        if(PlayerController_.Player.Run.triggered)
-        {
-            animatorController.SetBool("isRun", true);
-        } 
+        //if(PlayerController_.Player.Run.triggered)
+        //{
+        //    animatorController.SetBool("isRun", true);
+        //} 
 
 
         if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
@@ -135,7 +135,10 @@ public class PlayerController : MonoBehaviour
     }
     bool isGrounded()
     {
-        return Physics.Raycast(transform.position,-Vector3.up,.1f,mask);
+
+        Debug.DrawRay(transform.position, Vector3.down, Color.red);
+        return Physics.Raycast(transform.position, Vector3.down, .1f, mask);
+
     }
     
 

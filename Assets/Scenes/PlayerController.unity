@@ -878,7 +878,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258595955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.981758, y: 1.6977228, z: -10.864}
+  m_LocalPosition: {x: 11.981758, y: 1.5567228, z: -10.864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1737,7 +1737,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158830282638566650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.981758, y: 1.6977228, z: -10.864}
+  m_LocalPosition: {x: 11.981758, y: 1.5567228, z: -10.864}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3761,7 +3761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889905509137240597}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.506, y: 0.4, z: -8.644}
+  m_LocalPosition: {x: 11.506, y: 0.259, z: -8.644}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3781,8 +3781,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1889905509137010293}
   - component: {fileID: 1889905509146599475}
-  - component: {fileID: 1889905509146599476}
   - component: {fileID: 1889905509146599477}
+  - component: {fileID: 1889905509146599476}
   - component: {fileID: 1889905509146599478}
   m_Layer: 0
   m_Name: Ellen
@@ -5591,13 +5591,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.29
-  m_Radius: 0.15806675
-  m_SlopeLimit: 45
+  m_Height: 1.68
+  m_Radius: 0.47
+  m_SlopeLimit: 35
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Center: {x: 0, y: 0.89, z: 0}
 --- !u!137 &1889905509150842609
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
