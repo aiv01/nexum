@@ -1,47 +1,29 @@
 using UnityEngine;
-using UnityEditor;
 
 [RequireComponent(typeof(AudioSource))]
 public class AudioMgr : MonoBehaviour
 {
     [SerializeField]
-    private string doorClipPath;
-    [SerializeField]
-    private string boxClipPath;
-    [SerializeField]
-    private string switchClipPath;
-    [SerializeField]
-    private string pressurePlateClipPath;
-    [SerializeField]
-    private string shootClipPath;
-    [SerializeField]
-    private string ambienceClipPath;
-
     private AudioClip door;
+    [SerializeField]
     private AudioClip box;
+    [SerializeField]
     private AudioClip energySwitch;
+    [SerializeField]
     private AudioClip pressurePlate;
+    [SerializeField]
     private AudioClip shoot;
+    [SerializeField]
     private AudioClip ambience;
+
 
     private AudioSource source;
 
     private void Start()
     {
-        GetClips();
-
         source = GetComponent<AudioSource>();
         source.clip = ambience;
         source.Play();
-    }
-    private void GetClips()
-    {
-        door = (AudioClip)AssetDatabase.LoadAssetAtPath(doorClipPath, typeof(AudioClip));
-        box = (AudioClip)AssetDatabase.LoadAssetAtPath(boxClipPath, typeof(AudioClip));
-        energySwitch = (AudioClip)AssetDatabase.LoadAssetAtPath(switchClipPath, typeof(AudioClip));
-        pressurePlate = (AudioClip)AssetDatabase.LoadAssetAtPath(pressurePlateClipPath, typeof(AudioClip));
-        shoot = (AudioClip)AssetDatabase.LoadAssetAtPath(shootClipPath, typeof(AudioClip));
-        ambience = (AudioClip)AssetDatabase.LoadAssetAtPath(ambienceClipPath, typeof(AudioClip));
     }
     public void OpenCloseDoor()
     {

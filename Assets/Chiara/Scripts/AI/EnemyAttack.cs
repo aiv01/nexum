@@ -17,7 +17,6 @@ public class EnemyAttack : MonoBehaviour
     private Transform target = null;
 
     private Animator animator;
-    private int moveAnimIndex;
     private int attackAnimIndex;
 
     private void Start()
@@ -27,8 +26,6 @@ public class EnemyAttack : MonoBehaviour
 
         foreach (var param in animator.parameters)
         {
-            if (param.name == "IsMoving")
-                moveAnimIndex = param.nameHash;
             if (param.name == "Attack")
                 attackAnimIndex = param.nameHash;
         }
@@ -36,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        //animator.SetBool(moveAnimIndex, false); //temporary, needs fixing
+        transform.LookAt(target);
         currTimer += Time.deltaTime;
         if (currTimer >= attackTimer)
         {
@@ -47,7 +44,6 @@ public class EnemyAttack : MonoBehaviour
 
     private void Attack()
     {
-        //animator.SetBool(moveAnimIndex, false);
         if (target != null)
         {
             transform.LookAt(target, Vector3.up);
