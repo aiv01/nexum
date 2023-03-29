@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
-        movment = move_.ReadValue<Vector2>();
-        move = new Vector3(movment.x, 0, movment.y);
+        movement = move_.ReadValue<Vector2>();
+        move = new Vector3(movement.x, 0, movement.y);
         ySpeed += (Physics.gravity.y * Time.deltaTime);
 
         UPDATE_Direction();
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         //} 
 
 
-        if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
+        if (movement != Vector2.zero && DirectionTarget.magnitude > 0.1f)
         {
             Vector3 lookDirection = DirectionTarget.normalized;
             Rotation_ = Quaternion.LookRotation(lookDirection, transform.up);
