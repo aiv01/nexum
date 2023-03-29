@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(AudioSource))]
@@ -12,15 +13,29 @@ public class ChomperAIAudio : MonoBehaviour
     }
 
     [SerializeField]
+    //private string stepClipsPath;
     private AudioClip[] stepClips;
     [SerializeField]
+    //private string gruntClipsPath;
     private AudioClip[] gruntClips;
     [SerializeField]
+    //private string attackClipsPath;
     private AudioClip[] attackClips;
+
 
     private AudioClip currClip;
 
+    private void Start()
+    {
+        //GetClips();
+    }
+
     private void PlayStep()
+    {
+        PlayClip(ClipType.Step);
+    }
+
+    private void Land()
     {
         PlayClip(ClipType.Step);
     }
@@ -52,5 +67,12 @@ public class ChomperAIAudio : MonoBehaviour
                 break;
         }
         AudioSource.PlayClipAtPoint(currClip, transform.position);
+    }
+
+    private void GetClips()
+    {
+        //stepClips = (AudioClip[])AssetDatabase.LoadAllAssetsAtPath(stepClipsPath);
+        //gruntClips = (AudioClip[])AssetDatabase.LoadAllAssetsAtPath(gruntClipsPath);
+        //attackClips = (AudioClip[])AssetDatabase.LoadAllAssetsAtPath(attackClipsPath);
     }
 }

@@ -38,15 +38,15 @@ public class ChomperAIManager : MonoBehaviour
 
         if(other.tag == "Goal")
         {
-            patrol.enabled = false;
-            attack.enabled = false;
-            follow.enabled = true;
-            follow.SetTarget(other.transform, true);
+            if (other.gameObject.GetComponent<GoalAreaScript>().AddElement())
+            {
+                patrol.enabled = false;
+                attack.enabled = false;
+                follow.enabled = true;
+                follow.SetTarget(other.transform, true);
 
-            other.gameObject.GetComponent<GoalAreaScript>().AddElement();
-
-            ReachTarget();
-
+                ReachTarget();
+            }
             return;
         }
 
