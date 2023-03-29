@@ -18,18 +18,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask mask;
 
     [Header("InputPlayer")]
-    [SerializeField]  InputPlayer PlayerController_;
+    InputPlayer PlayerController_;
+    InputActionReference run;
 
     [Header("Jump")]
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float jumpSpeed;
     [SerializeField] bool canIJump;
     [SerializeField] float ySpeed;
-    private bool isJump;
-    private bool isGorund;
-    private bool isFalling;
 
     private InputAction move_;
     private InputAction jump_;
+    private InputAction run_;
 
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
@@ -49,15 +48,18 @@ public class PlayerController : MonoBehaviour
     {
         move_ = PlayerController_.Player.Movment;
         jump_ = PlayerController_.Player.Jump;
+        run_ = PlayerController_.Player.Run;
 
+        run_.Enable();
         move_.Enable();
-        jump_.Enable();
+        jump_.Enable(); 
     }
 
     private void OnDisable()
     {
         move_.Disable();
-        jump_.Disable();
+        jump_.Disable(); 
+        run_.Disable();
     }
 
     private void Start()
@@ -75,36 +77,35 @@ public class PlayerController : MonoBehaviour
     {
         movment = move_.ReadValue<Vector2>();
         move = new Vector3(movment.x, 0, movment.y);
-        ySpeed += Physics.gravity.y * Time.deltaTime;
+        ySpeed += (Physics.gravity.y * Time.deltaTime);
 
         UPDATE_Direction();
 
         if(isGrounded()) //jump
         {
             animatorController.SetBool("isGround", true);
-            isGorund = true;
             animatorController.SetBool("isJump", false);
-            isJump = false;
             animatorController.SetBool("isFalling", false);
-            isFalling = false;
             ySpeed = 0f;
 
             if (PlayerController_.Player.Jump.triggered && canIJump)
             {
                 ySpeed = jumpSpeed;
                 animatorController.SetBool("isJump", true);
-                isJump = true;
             }
         }
-        else
+        else 
         {
             animatorController.SetBool("isGround", false);
-            isGorund = false;
             animatorController.SetBool("isJump", false);
-            isJump = false;
             animatorController.SetBool("isFalling", true);
-            isFalling = true;
         }
+
+        //if(PlayerController_.Player.Run.triggered)
+        //{
+        //    animatorController.SetBool("isRun", true);
+        //} 
+
 
         if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
         {
@@ -125,6 +126,7 @@ public class PlayerController : MonoBehaviour
         move = MainCamera.forward * move.z + MainCamera.right * move.x;
         move.y = ySpeed;
 
+
         controller.Move(move * Time.deltaTime * playerSpeed);
         controller.Move(PlayerVelocity * Time.deltaTime);
 
@@ -133,8 +135,12 @@ public class PlayerController : MonoBehaviour
     }
     bool isGrounded()
     {
-        return Physics.Raycast(transform.position,-Vector3.up,.1f,mask);
+
+        Debug.DrawRay(transform.position, Vector3.down, Color.red);
+        return Physics.Raycast(transform.position, Vector3.down, .1f, mask);
+
     }
+    
 
     void UPDATE_Direction()
     {
