@@ -1,15 +1,16 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
-using ValvolaTest;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movment")]
     [SerializeField]  float playerSpeed = 2.0f;
-    [SerializeField]  float SmoothBlend = 0.1f;
+    [SerializeField]  float SmoorhBlend = 0.1f;
     [SerializeField]  float sensitivity = 0.5f; 
     [SerializeField]  float turnSpeed = 10f;
     [SerializeField]  float groundDrag = 3f;
+    bool isRunning = false;
+    bool isShoot = false;
 
     [Header("Other")]
     [SerializeField] CharacterController controller;
@@ -19,25 +20,24 @@ public class PlayerController : MonoBehaviour
 
     [Header("InputPlayer")]
     InputPlayer PlayerController_;
-    InputActionReference run;
-
-    [Header("Jump")]
-    [SerializeField] float jumpSpeed;
-    [SerializeField] bool canIJump;
-    [SerializeField] float ySpeed;
-
     private InputAction move_;
     private InputAction jump_;
     private InputAction run_;
+    private InputAction gunUp_;
+    private InputAction gunShoot_;
+
+    [Header("Jump")]
+    [SerializeField] bool canIJump;
+    [SerializeField] float jumpSpeed;
+    [SerializeField] float ySpeed;
 
     private Vector3 PlayerVelocity;
     private Vector3 DirectionTarget;
     private Vector3 move;
-    private Vector2 movement;
+    private Vector2 movment;
     private Quaternion Rotation_;
     private float TurnSpeedMulti;
     bool ForwardUse = false;
-
 
     private void Awake()
     {
@@ -49,10 +49,14 @@ public class PlayerController : MonoBehaviour
         move_ = PlayerController_.Player.Movment;
         jump_ = PlayerController_.Player.Jump;
         run_ = PlayerController_.Player.Run;
+        gunUp_ = PlayerController_.Player.GunAim;
+        gunShoot_ = PlayerController_.Player.GunShoot;
 
         run_.Enable();
         move_.Enable();
-        jump_.Enable(); 
+        jump_.Enable();
+        gunUp_.Enable();
+        gunShoot_.Enable();
     }
 
     private void OnDisable()
@@ -60,6 +64,8 @@ public class PlayerController : MonoBehaviour
         move_.Disable();
         jump_.Disable(); 
         run_.Disable();
+        gunUp_.Disable();
+        gunShoot_.Disable();
     }
 
     private void Start()
@@ -71,43 +77,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        input();
+        UPDATE_Direction();
     }
 
     void MovePlayer()
     {
-        movement = move_.ReadValue<Vector2>();
-        move = new Vector3(movement.x, 0, movement.y);
-        ySpeed += (Physics.gravity.y * Time.deltaTime);
+        movment = move_.ReadValue<Vector2>();
+        move = new Vector3(movment.x, 0, movment.y);
+        ySpeed += Physics.gravity.y * Time.deltaTime;//gravity
 
-        UPDATE_Direction();
-
-        if(isGrounded()) //jump
-        {
-            animatorController.SetBool("isGround", true);
-            animatorController.SetBool("isJump", false);
-            animatorController.SetBool("isFalling", false);
-            ySpeed = 0f;
-
-            if (PlayerController_.Player.Jump.triggered && canIJump)
-            {
-                ySpeed = jumpSpeed;
-                animatorController.SetBool("isJump", true);
-            }
-        }
-        else 
-        {
-            animatorController.SetBool("isGround", false);
-            animatorController.SetBool("isJump", false);
-            animatorController.SetBool("isFalling", true);
-        }
-
-        //if(PlayerController_.Player.Run.triggered)
-        //{
-        //    animatorController.SetBool("isRun", true);
-        //} 
-
-
-        if (movement != Vector2.zero && DirectionTarget.magnitude > 0.1f)
+        if (movment != Vector2.zero && DirectionTarget.magnitude > 0.1f)
         {
             Vector3 lookDirection = DirectionTarget.normalized;
             Rotation_ = Quaternion.LookRotation(lookDirection, transform.up);
@@ -126,29 +106,76 @@ public class PlayerController : MonoBehaviour
         move = MainCamera.forward * move.z + MainCamera.right * move.x;
         move.y = ySpeed;
 
+        if(isRunning)
+        {
+            movment *= 2f;
+        }
+
+        if(isShoot)
+        {
+            movment *= 0f;
+            move *= 0f;
+            ySpeed*= 0f;
+        }
 
         controller.Move(move * Time.deltaTime * playerSpeed);
         controller.Move(PlayerVelocity * Time.deltaTime);
 
-        if(Mathf.Abs(movement.x) > 0.0000001f || Mathf.Abs(movement.y) > 0.0000001f)
+        animatorController.SetFloat("x", movment.x, SmoorhBlend, Time.deltaTime);
+        animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
+    }
+
+    void input()
+    {
+
+        if (isGrounded()) //jump
         {
-            animatorController.SetFloat("x", movement.x, SmoothBlend, Time.deltaTime);
-            animatorController.SetFloat("y", movement.y, SmoothBlend, Time.deltaTime);
+            animatorController.SetBool("isGround", true);
+            animatorController.SetBool("isJump", false);
+            animatorController.SetBool("isFalling", false);
+            ySpeed = 0f;
+
+            if (jump_.triggered && canIJump)
+            {
+                ySpeed = jumpSpeed;
+                animatorController.SetBool("isJump", true);
+            }
         }
         else
         {
-            animatorController.SetFloat("x", movement.x);
-            animatorController.SetFloat("y", movement.y);
+            animatorController.SetBool("isGround", false);
+            animatorController.SetBool("isJump", false);
+            animatorController.SetBool("isFalling", true);
         }
+
+        if (run_.IsPressed()) //run
+        {
+            isRunning = !isRunning;
+        }
+
+        if(gunUp_.IsPressed()) // aim
+        {
+            isShoot = true;
+            animatorController.SetBool("isAiming", true);
+
+            if (gunShoot_.triggered) // shoot
+            {
+                animatorController.SetTrigger("isShoting");
+            }
+        }
+        else
+        {
+            isShoot = false;
+            animatorController.SetBool("isAiming", false);
+        }
+
+
+
     }
     bool isGrounded()
     {
-
-        Debug.DrawRay(transform.position, Vector3.down, Color.red);
-        return Physics.Raycast(transform.position, Vector3.down, .1f, mask);
-
+        return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, .5f, mask) && ySpeed < 0;
     }
-    
 
     void UPDATE_Direction()
     {

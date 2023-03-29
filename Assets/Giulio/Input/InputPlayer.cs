@@ -71,6 +71,24 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GunShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""2062532a-6402-4191-a98d-8d26b28d89ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GunAim"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed93ee2f-09c2-48a7-b20e-76a4b0dfbbd3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +289,28 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba87a4bd-66b0-4991-9947-9e3eb07dd605"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GunShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70402bc2-1da6-4dc6-b6fb-4b90511ea2ee"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GunAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -323,6 +363,8 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
         m_Player_Switch = m_Player.FindAction("Switch", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_GunShoot = m_Player.FindAction("GunShoot", throwIfNotFound: true);
+        m_Player_GunAim = m_Player.FindAction("GunAim", throwIfNotFound: true);
         // camera
         m_camera = asset.FindActionMap("camera", throwIfNotFound: true);
         m_camera_MouseController = m_camera.FindAction("Mouse/Controller", throwIfNotFound: true);
@@ -390,6 +432,8 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Switch;
     private readonly InputAction m_Player_Run;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_GunShoot;
+    private readonly InputAction m_Player_GunAim;
     public struct PlayerActions
     {
         private @InputPlayer m_Wrapper;
@@ -399,6 +443,8 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
         public InputAction @Switch => m_Wrapper.m_Player_Switch;
         public InputAction @Run => m_Wrapper.m_Player_Run;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @GunShoot => m_Wrapper.m_Player_GunShoot;
+        public InputAction @GunAim => m_Wrapper.m_Player_GunAim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -423,6 +469,12 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @GunShoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunShoot;
+                @GunShoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunShoot;
+                @GunShoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunShoot;
+                @GunAim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunAim;
+                @GunAim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunAim;
+                @GunAim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGunAim;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -442,6 +494,12 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @GunShoot.started += instance.OnGunShoot;
+                @GunShoot.performed += instance.OnGunShoot;
+                @GunShoot.canceled += instance.OnGunShoot;
+                @GunAim.started += instance.OnGunAim;
+                @GunAim.performed += instance.OnGunAim;
+                @GunAim.canceled += instance.OnGunAim;
             }
         }
     }
@@ -486,6 +544,8 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
         void OnSwitch(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnGunShoot(InputAction.CallbackContext context);
+        void OnGunAim(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -549,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 847998495}
   m_LocalRotation: {x: -0.27560577, y: 0.0076729585, z: 0.0036677956, w: 0.9612332}
   m_LocalPosition: {x: -0, y: 4.7845, z: 13.1694}
-  m_LocalScale: {x: 3.0036, y: 0.19956322, z: -20.578096}
+  m_LocalScale: {x: 3.0036, y: 0.19956322, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -715,7 +715,7 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_VerticalRecentering:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 15
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
@@ -739,7 +739,7 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_HorizontalRecentering:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 15
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
@@ -1699,7 +1699,7 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_VerticalRecentering:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 15
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
@@ -1723,7 +1723,7 @@ MonoBehaviour:
       m_LegacyHeadingDefinition: -1
       m_LegacyVelocityFilterStrength: -1
   m_HorizontalRecentering:
-    m_enabled: 1
+    m_enabled: 0
     m_WaitTime: 15
     m_RecenteringTime: 2
     m_LegacyHeadingDefinition: -1
@@ -3782,7 +3782,6 @@ GameObject:
   - component: {fileID: 1889905509137010293}
   - component: {fileID: 1889905509146599475}
   - component: {fileID: 1889905509146599477}
-  - component: {fileID: 1889905509146599476}
   - component: {fileID: 1889905509146599478}
   m_Layer: 0
   m_Name: Ellen
@@ -5540,20 +5539,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &1889905509146599476
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889905509137240597}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.15978098
-  m_Height: 1.6161777
-  m_Direction: 1
-  m_Center: {x: -0.002192974, y: 0.95, z: 0}
 --- !u!114 &1889905509146599477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5577,8 +5562,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
-  jumpSpeed: 10
   canIJump: 1
+  jumpSpeed: 10
   ySpeed: 0
 --- !u!143 &1889905509146599478
 CharacterController:
@@ -6309,8 +6294,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 0
-  jumpSpeed: 0
   canIJump: 0
+  jumpSpeed: 0
   ySpeed: 0
 --- !u!1 &5517710489459709014
 GameObject:
