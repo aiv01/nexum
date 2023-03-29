@@ -156,6 +156,7 @@ public class PlayerController : MonoBehaviour
         if(gunUp_.IsPressed()) // aim
         {
             isShoot = true;
+            animatorController.SetLayerWeight(1, 1);
             animatorController.SetBool("isAiming", true);
 
             if (gunShoot_.triggered) // shoot
@@ -165,6 +166,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            animatorController.SetLayerWeight(0, 0);
             isShoot = false;
             animatorController.SetBool("isAiming", false);
         }
