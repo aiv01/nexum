@@ -7,9 +7,11 @@ public class IsActive : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera Ellen;
     [SerializeField] private CinemachineVirtualCamera Robot;
-    [SerializeField] private PlayerController EllenController;
+    [SerializeField] private CharacterController EllenController;
+    [SerializeField] private CharacterController RobotController;
+    [SerializeField] private PlayerController RbPlController;
+    [SerializeField] private PlayerController EllenPLController;
     [SerializeField] private Animator EllenAnim;
-    [SerializeField] private PlayerController RobotController;
     [SerializeField] private Animator RobotAnim;
 
     [SerializeField] private InputPlayer Key;
@@ -41,26 +43,27 @@ public class IsActive : MonoBehaviour
 
     private void Switch(InputAction.CallbackContext callbackContext)
     {
+        
         if (SwitchCamera.IsActiveCam(Ellen))
         {
-            EllenController.enabled = false;
-            EllenAnim.SetFloat("x", 0);
-            EllenAnim.SetFloat("y", 0);
-            EllenAnim.SetBool("isGround", true);
-            EllenAnim.SetBool("isJump", false);
-            EllenAnim.SetBool("isFalling", false);
-            RobotController.enabled = true;
-            SwitchCamera.SwitchCam(Robot);
+            if(EllenController.isGrounded)
+            {
+              EllenPLController.enabled = false;
+              EllenAnim.SetFloat("x", 0);
+              EllenAnim.SetFloat("y", 0);
+              RbPlController.enabled = true;
+              SwitchCamera.SwitchCam(Robot);
+            }    
            
         }
         else if (SwitchCamera.IsActiveCam(Robot))
         {
-            RobotController.enabled = false;
-            RobotAnim.SetFloat("x", 0);
-            RobotAnim.SetFloat("y", 0);
-            EllenController.enabled = true;
-            
-            SwitchCamera.SwitchCam(Ellen);
+             RbPlController.enabled = false;
+             RobotAnim.SetFloat("x", 0);
+             RobotAnim.SetFloat("y", 0);
+             EllenPLController.enabled = true;
+             SwitchCamera.SwitchCam(Ellen);
+           
         }
  
      }

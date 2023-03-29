@@ -1092,9 +1092,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ellen: {fileID: 158830282638566649}
   Robot: {fileID: 4542285895340150782}
-  EllenController: {fileID: 1889905509146599477}
+  EllenController: {fileID: 1889905509146599478}
+  RobotController: {fileID: 5412594308265862503}
+  RbPlController: {fileID: 5412594308265862504}
+  EllenPLController: {fileID: 1889905509146599477}
   EllenAnim: {fileID: 1889905509146599475}
-  RobotController: {fileID: 5412594308265862504}
   RobotAnim: {fileID: 5412594308265862502}
 --- !u!1 &1367168143
 GameObject:
@@ -6293,7 +6295,7 @@ MonoBehaviour:
   MainCamera: {fileID: 4542285895340150783}
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   canIJump: 0
   jumpSpeed: 0
   ySpeed: 0
