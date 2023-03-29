@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.VFX;
 
 
@@ -8,18 +9,21 @@ using UnityEngine.VFX;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    VisualEffect effect;
 
     [SerializeField]
     float n = 10;
     [SerializeField]
     float speed = 5f;
+    [SerializeField]
+    float lifeSpan = 2f;
+
+    [SerializeField]
+    UnityEvent onImpactEvent;
 
     Rigidbody MyRB;
     Collider myC;
     ParticleMgr particleMgr;
-
+    
     private void Awake()
     {
         MyRB = GetComponent<Rigidbody>();
@@ -27,7 +31,20 @@ public class Bullet : MonoBehaviour
         particleMgr = GameObject.Find("ParticleMgr").GetComponent<ParticleMgr>();
         if (particleMgr == null)
             Debug.LogError("Manca ParticleMgr");
+    }
+
+    private void OnEnable()
+    {
         MyRB.velocity = transform.forward * speed;
+
+        StartCoroutine(nameof(MaxLifespan));
+    }
+
+    IEnumerator MaxLifespan()
+    {
+        yield return new WaitForSeconds(lifeSpan);
+
+        gameObject.SetActive(false);
     }
     private void OnDrawGizmos()
     {
@@ -36,6 +53,7 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("Colpito");
+        onImpactEvent.Invoke();
         var vfx = particleMgr.GetBulletParticle(.5f);
         if (vfx == null) { Debug.LogWarning("Manca Particella"); return; }
         var cp = collision.GetContact(0);
@@ -66,6 +84,6 @@ public class Bullet : MonoBehaviour
         vfx.transform.position = cp.point;
         vfx.transform.forward = cp.normal;
 
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
     }
 }

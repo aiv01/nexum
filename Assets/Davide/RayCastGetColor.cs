@@ -3,20 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
 using UnityEditor;
+using UnityEngine.InputSystem;
 [DisallowMultipleComponent]
 public class RayCastGetColor : MonoBehaviour
 {
     [SerializeField]
-    Bullet bullet;
+    BulletMgr btMgr;
 
+    InputPlayer playerController_;
 
+    InputAction aim;
+    InputAction shoot;
+    private void Awake()
+    {
+        playerController_ = new InputPlayer();
+    }
+    private void Start()
+    {
+        btMgr = GameObject.Find("BulletMgr").GetComponent<BulletMgr>();
+        aim = playerController_.Player.Aim;
+        shoot = playerController_.Player.Shoot;
+
+        aim.Enable();
+        shoot.Enable();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (aim.IsPressed())
         {
-            LanciaRaggio();
+            Debug.Log("Aimando");
+            if (shoot.triggered)
+            {
+                LanciaRaggio();
+            }
         }
+            
     }
     public void LanciaRaggio()
     {
@@ -25,7 +47,7 @@ public class RayCastGetColor : MonoBehaviour
 
         //Debug.Log(hitfo.collider.name);
         //Debug.Log(hitfo.textureCoord);
-        var b = Instantiate<Bullet>(bullet);
+        var b = btMgr.GetBullet();
         b.transform.position = transform.position;
 
     }
