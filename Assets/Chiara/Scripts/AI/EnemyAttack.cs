@@ -36,7 +36,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool(moveAnimIndex, false); //temporary, needs fixing
+        //animator.SetBool(moveAnimIndex, false); //temporary, needs fixing
         currTimer += Time.deltaTime;
         if (currTimer >= attackTimer)
         {
@@ -47,7 +47,8 @@ public class EnemyAttack : MonoBehaviour
 
     private void Attack()
     {
-        if(target != null)
+        //animator.SetBool(moveAnimIndex, false);
+        if (target != null)
         {
             transform.LookAt(target, Vector3.up);
             animator.SetTrigger(attackAnimIndex);
