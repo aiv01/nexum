@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScene/AllTogheaterNow.unity
+    path: Assets/Scenes/TestScene/AllTogheterNow.unity
     guid: 3c5f1b4f3af26a44e9b5d3976b9a30e3
   - enabled: 1
     path: Assets/Scenes/EnemyAIScene/EnemyAIScene.unity
