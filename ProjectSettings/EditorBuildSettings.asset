@@ -14,5 +14,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pistola.unity
     guid: 2a597a2d4e2d4c042a46bbc2cabc2b3b
+  - enabled: 1
+    path: Assets/Scenes/Menu/MainMenu.unity
+    guid: 1f69620429b301f4e82c8c0cad5a57bd
+  - enabled: 1
+    path: Assets/Scenes/Menu/LevelSelection.unity
+    guid: 8b0e6ced7cae08a4cb8903e1b035bac8
+  - enabled: 1
+    path: Assets/Scenes/Menu/PauseMenuTestScene.unity
+    guid: 9232012c76499044cb66c34b6ca1f862
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fa73fe5df5d28e140bfb994b51fde78d, type: 2}

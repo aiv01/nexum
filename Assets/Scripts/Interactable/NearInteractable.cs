@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.Events;
 
 [DisallowMultipleComponent]
@@ -16,13 +17,17 @@ public class NearInteractable : Interactable
     float resetTime;
 
     [SerializeField]
-    bool turnOnOff;
+    bool switchOnOffPlayer;
+
+    [SerializeField]
+    VisualEffect vfx;
 
     bool isOn;
 
     public override void Interact()
     {
-        if (turnOnOff)
+
+        if (switchOnOffPlayer)
         {
             if (!isOn)
             {
@@ -47,7 +52,10 @@ public class NearInteractable : Interactable
             StartCoroutine(ResetAtTime());
     }
 
-
+    public void SetVFXActive(bool b)
+    {
+        vfx.SetBool("IsActive", b);
+    }
     IEnumerator ResetAtTime()
     {
         yield return new WaitForSeconds(resetTime);

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.VFX;
 
 [DisallowMultipleComponent]
 public class HoldableObject : Interactable
@@ -23,10 +23,14 @@ public class HoldableObject : Interactable
 
     [SerializeField]
     private ParticleSystem visibleDropPosition;
+
+    [SerializeField]
+    VisualEffect HoverVFX;
     private void Awake()
     {
         myRB = GetComponent<Rigidbody>();
         activationCollider = GetComponent<Collider>();
+        HoverVFX.enabled = false;
     }
 
     public override void Interact()
@@ -42,8 +46,10 @@ public class HoldableObject : Interactable
             Debug.Log("BUTTO PER TERRA LE COSE");
             transform.position = dropZone.position;
             visibleDropPosition.transform.position = Vector3.down * -10;
+            HoverVFX.enabled = false;
         }
-
+        else
+            HoverVFX.enabled = true;
         #region old
         /*if (isHolding)
         {
