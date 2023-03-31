@@ -10,4 +10,8 @@ public class AI_BandAid : MonoBehaviour
     private void AttackBegin() { }
     private void AttackEnd() { }
     private void Grunt() { }
+    private void PutAwayGun() { }
+    private void TakeOutGun() { }
+    private void Land() { }
+    private void ShootGun() { }
 }

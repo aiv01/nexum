@@ -21,8 +21,8 @@ public class RayCastGetColor : MonoBehaviour
     private void Start()
     {
         btMgr = GameObject.Find("BulletMgr").GetComponent<BulletMgr>();
-        aim = playerController_.Player.Aim;
-        shoot = playerController_.Player.Shoot;
+        //aim = playerController_.Player.Aim;
+        //shoot = playerController_.Player.Shoot;
 
         aim.Enable();
         shoot.Enable();

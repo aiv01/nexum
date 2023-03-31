@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         MainCamera = Camera.main.transform;
         Cursor.lockState = CursorLockMode.Locked;
+        transform.position = transform.localPosition;
     }
 
     void Update()
