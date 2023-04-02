@@ -20,6 +20,15 @@ public class SaveScript : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        if (!File.Exists(savePath))
+        {
+            saveValues = new string[3];
+            for(int i = 0; i < 3; i++)
+            {
+                saveValues[i] = "0";
+            }
+            File.WriteAllLines(savePath, saveValues);
+        }
         saveValues = File.ReadAllLines(savePath);
         GetStartSceneIdx();
         Save();
