@@ -19,6 +19,7 @@ public class SaveScript : MonoBehaviour
 
     private void Start()
     {
+        savePath = savePath + "_" + saveFileNumber + ".Nexum";
         DontDestroyOnLoad(gameObject);
         if (!File.Exists(savePath))
         {
@@ -32,7 +33,7 @@ public class SaveScript : MonoBehaviour
         saveValues = File.ReadAllLines(savePath);
         GetStartSceneIdx();
         Save();
-        Load();
+        //Load();
     }
 
     //save file format: int file exists (0 = false), bool for each level (true if completed)

@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 
 [DisallowMultipleComponent]
-public class PauseMenuMgr : MonoBehaviour
+public class ControllerMenuHandler : MonoBehaviour
 {
 
     [SerializeField]
@@ -18,8 +18,8 @@ public class PauseMenuMgr : MonoBehaviour
     [SerializeField]
     UnityEvent onPauseLeft;
 
-    [SerializeField]
-    Canvas Menu;
+    //[SerializeField]
+    //Canvas Menu;
 
     GameObject selectedControl => UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
 
@@ -30,7 +30,7 @@ public class PauseMenuMgr : MonoBehaviour
 
     private void OnEnable()
     {
-        Menu.gameObject.SetActive(true);
+        //Menu.gameObject.SetActive(true);
 
         SelectFirstControl();
         
@@ -43,7 +43,7 @@ public class PauseMenuMgr : MonoBehaviour
     }
     private void OnDisable()
     {
-        Menu.gameObject.SetActive(false);
+        //Menu.gameObject.SetActive(false);
 
         Time.timeScale = 1.0f;
         gameInput.Menu.Disable();

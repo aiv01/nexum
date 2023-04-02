@@ -3645,6 +3645,7 @@ MonoBehaviour:
   sensitivity: 0.5
   turnSpeed: 10
   groundDrag: 3
+  isShoot: 0
   controller: {fileID: 1372736923}
   animatorController: {fileID: 1372736925}
   MainCamera: {fileID: 405735713}
@@ -4675,8 +4676,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f03f8e6c4055442b4c73cd3ba5d927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenes: []
-  savePath: Assets/SaveFile.Nexum
+  scenes:
+  - 3
+  savePath: Save
+  totalLevels: 3
   saveFileNumber: 0
 --- !u!4 &1667311548
 Transform:
@@ -5849,6 +5852,7 @@ MonoBehaviour:
   sensitivity: 0.5
   turnSpeed: 10
   groundDrag: 3
+  isShoot: 0
   controller: {fileID: 1966316539}
   animatorController: {fileID: 1966316542}
   MainCamera: {fileID: 0}

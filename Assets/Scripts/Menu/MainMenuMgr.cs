@@ -31,7 +31,11 @@ public class MainMenuMgr : MonoBehaviour
     {
         for(int i = 0;  i <3; i++)
         {
-            Files_Btn[i].interactable = Exist_File(i);
+            if (!Files[i])
+            {
+                Files_Btn[i].onClick.RemoveAllListeners();
+                Files_Btn[i].image.color = new Color(.5f, .5f, .5f, .5f);
+            }
         }
 
         firstAviableSlot = GetFirstAvaiableSlot();
@@ -60,12 +64,14 @@ public class MainMenuMgr : MonoBehaviour
     private void NewGame()
     {
         StaticValues.currentFile = firstAviableSlot;
+        Debug.Log(firstAviableSlot);
         SceneManager.LoadScene(newGameScene);
     }
 
     public void SwitchToLevelScene(int btn_id)
     {
         StaticValues.currentFile = btn_id;
+        Debug.Log("SWDQDAD");
         SceneManager.LoadScene(LevelSelectionScene);
     }
 
