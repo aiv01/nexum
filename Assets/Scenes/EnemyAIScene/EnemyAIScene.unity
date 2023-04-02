@@ -1402,8 +1402,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.467308, y: 1, z: 2.4553423}
+  m_Center: {x: 0.062051773, y: 0, z: -0.029118061}
 --- !u!114 &531858936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,8 +1421,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1667311547}
         m_TargetAssemblyTypeName: SaveScript, Assembly-CSharp
-        m_MethodName: Save
-        m_Mode: 6
+        m_MethodName: LevelUp
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4677,6 +4677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scenes: []
   savePath: Assets/SaveFile.Nexum
+  saveFileNumber: 0
 --- !u!4 &1667311548
 Transform:
   m_ObjectHideFlags: 0
