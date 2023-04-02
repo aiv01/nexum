@@ -71,7 +71,7 @@ public class SaveScript : MonoBehaviour
     }
     public void Load()
     {
-        //SceneManager.LoadScene(scenes[sceneIdx]);
+        SceneManager.LoadScene(scenes[currSceneIdx]);
         Debug.Log("Loaded scene: " + currSceneIdx);
     }
     public void ResetSaveFile() //call ONLY after SetSaveFileNumber()
