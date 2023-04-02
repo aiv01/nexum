@@ -5,66 +5,93 @@ using System.Collections;
 
 public class IsActive : MonoBehaviour
 {
-    [SerializeField] private CinemachineVirtualCamera Ellen;
-    [SerializeField] private CinemachineVirtualCamera Robot;
-    [SerializeField] private CharacterController EllenController;
-    [SerializeField] private CharacterController RobotController;
-    [SerializeField] private PlayerController RbPlController;
-    [SerializeField] private PlayerController EllenPLController;
-    [SerializeField] private Animator EllenAnim;
-    [SerializeField] private Animator RobotAnim;
+    [SerializeField] private CharacterController Ellen;
+    [SerializeField] private CharacterController Robot;
+
+    [SerializeField] private CinemachineVirtualCamera EllenCamera;
+    [SerializeField] private CinemachineVirtualCamera RobotCamera;
+
+    /*[SerializeField]*/ private PlayerController RobotPlayerController;
+    /*[SerializeField]*/ private PlayerController EllenPlayerController;
+    /*[SerializeField]*/ private Animator EllenAnim;
+    /*[SerializeField]*/ private Animator RobotAnim;
 
     [SerializeField] private InputPlayer Key;
 
     private InputAction switchPlayer_;
+    private InputAction pause_;
+
+    [SerializeField]
+    private UnityEngine.Events.UnityEvent onPauseRequrested;
 
     private void Awake()
     {
         Key = new InputPlayer();
+
+        RobotPlayerController = Robot.GetComponent<PlayerController>();
+        RobotAnim = Robot.GetComponent<Animator>();
+        EllenPlayerController = Ellen.GetComponent<PlayerController>();
+        EllenAnim = Ellen.GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
-        SwitchCamera.Register(Ellen);
-        SwitchCamera.Register(Robot);
-        SwitchCamera.SwitchCam(Ellen);
+        SwitchCamera.Register(EllenCamera);
+        SwitchCamera.Register(RobotCamera);
+        SwitchCamera.SwitchCam(EllenCamera);
 
         switchPlayer_ = Key.Player.Switch;
         switchPlayer_.Enable();
         switchPlayer_.performed += Switch;
+
+        pause_ = Key.Player.Pause;
+        pause_.Enable();
+        pause_.performed += Pause;
     }
     private void OnDisable()
     {
         switchPlayer_.Disable();
 
-        SwitchCamera.UnRegister(Ellen);
-        SwitchCamera.UnRegister(Robot);
+        SwitchCamera.UnRegister(EllenCamera);
+        SwitchCamera.UnRegister(RobotCamera);
+
+        pause_.Disable();
+        pause_.performed -= Pause;
     }
 
     private void Switch(InputAction.CallbackContext callbackContext)
     {
         
-        if (SwitchCamera.IsActiveCam(Ellen))
+        if (SwitchCamera.IsActiveCam(EllenCamera))
         {
-            if(EllenController.isGrounded)
+            if(Ellen.isGrounded)
             {
-              EllenPLController.enabled = false;
+              EllenPlayerController.enabled = false;
               EllenAnim.SetFloat("x", 0);
               EllenAnim.SetFloat("y", 0);
-              RbPlController.enabled = true;
-              SwitchCamera.SwitchCam(Robot);
+              RobotPlayerController.enabled = true;
+              SwitchCamera.SwitchCam(RobotCamera);
             }    
            
         }
-        else if (SwitchCamera.IsActiveCam(Robot))
+        else if (SwitchCamera.IsActiveCam(RobotCamera))
         {
-             RbPlController.enabled = false;
-             RobotAnim.SetFloat("x", 0);
-             RobotAnim.SetFloat("y", 0);
-             EllenPLController.enabled = true;
-             SwitchCamera.SwitchCam(Ellen);
+            //if (RobotController.isGrounded)
+            //{
+                RobotPlayerController.enabled = false;
+                RobotAnim.SetFloat("x", 0);
+                RobotAnim.SetFloat("y", 0);
+                EllenPlayerController.enabled = true;
+                SwitchCamera.SwitchCam(EllenCamera);
+            //}
            
         }
  
      }
+
+    private void Pause(InputAction.CallbackContext callbackContext)
+    {
+        onPauseRequrested.Invoke();
+        enabled = false;
+    }
 }

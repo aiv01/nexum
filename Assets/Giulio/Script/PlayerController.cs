@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField]  float turnSpeed = 10f;
     [SerializeField]  float groundDrag = 3f;
     bool isRunning = false;
-    bool isShoot = false;
+
+
+
+    public bool isShoot = false;
 
     [Header("Other")]
     [SerializeField] CharacterController controller;
@@ -39,9 +42,13 @@ public class PlayerController : MonoBehaviour
     private float TurnSpeedMulti;
     bool ForwardUse = false;
 
+
+    private PlayerInteraction myPI;
+
     private void Awake()
     {
         PlayerController_ = new InputPlayer();
+        myPI = GetComponent<PlayerInteraction>();
     }
 
     private void OnEnable()
@@ -57,6 +64,8 @@ public class PlayerController : MonoBehaviour
         jump_.Enable();
         gunUp_.Enable();
         gunShoot_.Enable();
+
+        myPI.enabled = true;
     }
 
     private void OnDisable()
@@ -66,6 +75,8 @@ public class PlayerController : MonoBehaviour
         run_.Disable();
         gunUp_.Disable();
         gunShoot_.Disable();
+
+        myPI.enabled = false;
     }
 
     private void Start()
@@ -136,7 +147,7 @@ public class PlayerController : MonoBehaviour
             animatorController.SetBool("isFalling", false);
             ySpeed = 0f;
 
-            if (jump_.triggered && canIJump)
+            if (jump_.triggered && canIJump && !isShoot)
             {
                 ySpeed = jumpSpeed;
                 animatorController.SetBool("isJump", true);
@@ -154,29 +165,12 @@ public class PlayerController : MonoBehaviour
             isRunning = !isRunning;
         }
 
-        if(gunUp_.IsPressed()) // aim
-        {
-            isShoot = true;
-            animatorController.SetLayerWeight(1, 1);
-            animatorController.SetBool("isAiming", true);
-
-            if (gunShoot_.triggered) // shoot
-            {
-                animatorController.SetTrigger("isShoting");
-            }
-        }
-        else
-        {
-            animatorController.SetLayerWeight(0, 0);
-            isShoot = false;
-            animatorController.SetBool("isAiming", false);
-        }
-
 
 
     }
     bool isGrounded()
     {
+        if (isShoot) return true;
         return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, .5f, mask) && ySpeed < 0;
     }
 
@@ -201,4 +195,5 @@ public class PlayerController : MonoBehaviour
             DirectionTarget = movment.x * right + Mathf.Abs(movment.y) * forward;
         }
     }
+
 }
