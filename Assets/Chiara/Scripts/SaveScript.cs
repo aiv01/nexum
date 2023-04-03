@@ -108,4 +108,13 @@ public class SaveScript : MonoBehaviour
         else
             return true;
     }
+
+    public bool WasLevelCompleted(int saveFile, int level) //!!!level numbers start from 1!!!
+    {
+        if (!SaveFileExists(saveFile)) return false;
+        string[] values = saveValues[saveFile].Split(',');
+        bool completed = false;
+        bool.TryParse(values[level], out completed);
+        return completed;
+    }
 }
