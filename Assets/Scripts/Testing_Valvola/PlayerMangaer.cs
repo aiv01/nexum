@@ -9,7 +9,7 @@ namespace ValvolaTest
     public class PlayerMangaer : MonoBehaviour
     {
         [SerializeField]
-        PlayerController[] players;
+        FakeController[] players;
         private int currentPlayerNum;
 
         [SerializeField]
@@ -20,7 +20,7 @@ namespace ValvolaTest
 
         public bool ControlAim = false;
 
-        PlayerController currentPlayer
+        FakeController currentPlayer
         {
             get { return players[currentPlayerNum]; }
         }

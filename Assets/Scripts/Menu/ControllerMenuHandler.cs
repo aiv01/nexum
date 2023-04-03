@@ -16,10 +16,7 @@ public class ControllerMenuHandler : MonoBehaviour
     GameObject firstSelectedControl;
 
     [SerializeField]
-    UnityEvent onPauseLeft;
-
-    //[SerializeField]
-    //Canvas Menu;
+    UnityEvent onCancelPressed;
 
     GameObject selectedControl => UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
 
@@ -30,27 +27,20 @@ public class ControllerMenuHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        //Menu.gameObject.SetActive(true);
-
         SelectFirstControl();
-        
-        
         gameInput.Menu.Enable();
-
         gameInput.Menu.Cancel.performed += HandleCancelPressed;
         gameInput.Menu.Navigate.performed += HandleNevigationPerformed;
-        Time.timeScale = .0f;
     }
     private void OnDisable()
     {
-        //Menu.gameObject.SetActive(false);
-
-        Time.timeScale = 1.0f;
+        gameInput.Menu.Cancel.performed -= HandleCancelPressed;
+        gameInput.Menu.Navigate.performed -= HandleNevigationPerformed;
         gameInput.Menu.Disable();
     }
     private void HandleCancelPressed(InputAction.CallbackContext ctx)
     {
-        onPauseLeft.Invoke();
+        onCancelPressed.Invoke();
         enabled = false;
     }
 

@@ -6,7 +6,7 @@ namespace ValvolaTest
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : MonoBehaviour
+    public class FakeController : MonoBehaviour
     {
         [SerializeField]
         private float speed = .05f;

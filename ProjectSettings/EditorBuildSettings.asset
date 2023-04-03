@@ -6,22 +6,19 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestScene/AllTogheterNow.unity
-    guid: 3c5f1b4f3af26a44e9b5d3976b9a30e3
-  - enabled: 1
-    path: Assets/Scenes/EnemyAIScene/EnemyAIScene.unity
-    guid: 8d9a0454e440bdc4593d2c83cd36b64d
-  - enabled: 1
-    path: Assets/Scenes/Pistola.unity
-    guid: 2a597a2d4e2d4c042a46bbc2cabc2b3b
-  - enabled: 1
     path: Assets/Scenes/Menu/MainMenu.unity
     guid: 1f69620429b301f4e82c8c0cad5a57bd
   - enabled: 1
     path: Assets/Scenes/Menu/LevelSelection.unity
     guid: 8b0e6ced7cae08a4cb8903e1b035bac8
   - enabled: 1
-    path: Assets/Scenes/Menu/PauseMenuTestScene.unity
-    guid: 9232012c76499044cb66c34b6ca1f862
+    path: Assets/Scenes/Levels/Level_01.unity
+    guid: a093355e2478e0c499ce5d3b97478d01
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level_02.unity
+    guid: e67d40eaff1d60c4c82650389fa13136
+  - enabled: 1
+    path: Assets/Scenes/Levels/Third Level Example.unity
+    guid: 34a7ce1b7e008f941ab43394e73adba0
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fa73fe5df5d28e140bfb994b51fde78d, type: 2}

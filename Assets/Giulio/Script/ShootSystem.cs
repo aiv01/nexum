@@ -26,8 +26,9 @@ public class ShootSystem : MonoBehaviour
     [SerializeField] Camera CamAim;
     [SerializeField] float maxAutoAimDistance = 5;
 
-    bool True_;
 
+    [SerializeField] Transform gun;
+    [SerializeField] BulletMgr MyBM;
     private void Awake()
     {
         PlayerInput_ = new InputPlayer();
@@ -82,14 +83,25 @@ public class ShootSystem : MonoBehaviour
             {
                 AimPos.position = Vector3.Lerp(AimPos.position, transform.position + Camera.main.transform.forward * maxAutoAimDistance, Smooth * Time.deltaTime);
             }
+            gun.transform.LookAt(AimPos.position);
+
         }
         else if (IKStr >= 0)
             IKStr -= IKIncrement * Time.deltaTime;
 
         IKStr = Mathf.Clamp(IKStr, 0, IKMax);
+
     }
 
-
+    private void ShootGun() { Shoot(); }
+    private void Shoot()
+    {
+        var b = MyBM.GetBullet();
+        if (b == null) return;
+        b.transform.position = gun.transform.position;
+        b.transform.LookAt(AimPos.position);
+        b.target = AimPos.position;
+    }
     private void OnAnimatorIK(int layerIndex)
     {
         //return;
@@ -144,7 +156,7 @@ public class ShootSystem : MonoBehaviour
     }
 
 
-    private void ActivateIK() {
+    private void OnTakeOutGun() {
     }
     private void PutAwayGun()
     {

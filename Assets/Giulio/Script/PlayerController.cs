@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     private InputAction move_;
     private InputAction jump_;
     private InputAction run_;
-    private InputAction gunUp_;
-    private InputAction gunShoot_;
+    //private InputAction gunUp_;
+    //private InputAction gunShoot_;
 
     [Header("Jump")]
     [SerializeField] bool canIJump;
@@ -45,10 +45,13 @@ public class PlayerController : MonoBehaviour
 
     private PlayerInteraction myPI;
 
+    private ShootSystem mySS;
+
     private void Awake()
     {
         PlayerController_ = new InputPlayer();
         myPI = GetComponent<PlayerInteraction>();
+        mySS = GetComponent<ShootSystem>();
     }
 
     private void OnEnable()
@@ -56,16 +59,18 @@ public class PlayerController : MonoBehaviour
         move_ = PlayerController_.Player.Movment;
         jump_ = PlayerController_.Player.Jump;
         run_ = PlayerController_.Player.Run;
-        gunUp_ = PlayerController_.Player.GunAim;
-        gunShoot_ = PlayerController_.Player.GunShoot;
+        //gunUp_ = PlayerController_.Player.GunAim;
+        //gunShoot_ = PlayerController_.Player.GunShoot;
 
         run_.Enable();
         move_.Enable();
         jump_.Enable();
-        gunUp_.Enable();
-        gunShoot_.Enable();
+        //gunUp_.Enable();
+        //gunShoot_.Enable();
 
         myPI.enabled = true;
+        if (mySS != null)
+            mySS.enabled = true;
     }
 
     private void OnDisable()
@@ -73,10 +78,13 @@ public class PlayerController : MonoBehaviour
         move_.Disable();
         jump_.Disable(); 
         run_.Disable();
-        gunUp_.Disable();
-        gunShoot_.Disable();
+        //gunUp_.Disable();
+        //gunShoot_.Disable();
 
         myPI.enabled = false;
+
+        if (mySS != null)
+            mySS.enabled = false;
     }
 
     private void Start()

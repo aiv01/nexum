@@ -9,16 +9,37 @@ public class LevelSelectMgr : MonoBehaviour
 {
     [SerializeField]
     int numLevel;
-    [SerializeField]
-    bool[] levelUnlocked;
 
     [SerializeField]
     ButtonLevel[] Levels;
+
+    SaveScript save;
+    private void Awake()
+    {
+        save = GameObject.Find("DontDestroyOnLoad").GetComponent<SaveScript>();
+    }
     private void Start()
     {
-        for (int i = 0; i < numLevel; i++)
+        for (int i = 0; i < Levels.Length; i++)
         {
-            Levels[i].enabled = levelUnlocked[i];
+            Levels[i].enabled = false;
+
+            if (i > 0 && !save.WasLevelCompleted(save.SaveFileNumber, i))            
+                Levels[i].isUnlocked = false;
+
+            //Debug.Log(save.WasLevelCompleted(save.SaveFileNumber, i + 1));
+            Levels[i].enabled = true;
         }
+    }
+
+    public void LoadLevel(int level_id)
+    {
+        SceneManager.LoadScene(level_id);
+    }
+
+    public void DeleteSaveFile()
+    {
+        save.ResetSaveFile();
+        SceneManager.LoadScene(0);
     }
 }

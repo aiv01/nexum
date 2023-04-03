@@ -11,7 +11,6 @@ public class MainMenuMgr : MonoBehaviour
     [SerializeField]
     Button New_Game_Btn;
 
-    public bool[] Files;
     [SerializeField]
     Button[] Files_Btn;
 
@@ -27,14 +26,23 @@ public class MainMenuMgr : MonoBehaviour
 
     int firstAviableSlot;
 
+    SaveScript save;
+
+    private bool[] Files;
     private void Start()
     {
+        save = GameObject.Find("DontDestroyOnLoad").GetComponent<SaveScript>();
+        Files = new bool[Files_Btn.Length];
+        ColorBlock cb = Files_Btn[0].colors;
         for(int i = 0;  i <3; i++)
         {
-            if (!Files[i])
+            Files[i] = save.SaveFileExists(i);
+
+            if (!save.SaveFileExists(i))
             {
-                Files_Btn[i].onClick.RemoveAllListeners();
-                Files_Btn[i].image.color = new Color(.5f, .5f, .5f, .5f);
+
+                cb.normalColor = new Color(.75f, .75f, .75f, .75f);
+                Files_Btn[i].colors = cb;
             }
         }
 
@@ -56,27 +64,27 @@ public class MainMenuMgr : MonoBehaviour
         return Files.Length;
     }
 
-    private void ExitGame()
+    public void ExitGame()
     {
         Application.Quit();
     }
 
-    private void NewGame()
-    {
-        StaticValues.currentFile = firstAviableSlot;
-        Debug.Log(firstAviableSlot);
-        SceneManager.LoadScene(newGameScene);
-    }
+    //private void NewGame()
+    //{
+    //    StaticValues.currentFile = firstAviableSlot;
+    //    Debug.Log(firstAviableSlot);
+    //    SceneManager.LoadScene(newGameScene);
+    //}
 
-    public void SwitchToLevelScene(int btn_id)
+    public void SwitchToLevelSceneWithID(int btn_id)
     {
-        StaticValues.currentFile = btn_id;
+        save.SaveFileNumber = btn_id;
+        if (!Files[btn_id])
+            save.Save();
+
+        //save.Load();
         Debug.Log("SWDQDAD");
         SceneManager.LoadScene(LevelSelectionScene);
     }
 
-    private bool Exist_File(int val)
-    {
-        return Files[val];
-    }
 }

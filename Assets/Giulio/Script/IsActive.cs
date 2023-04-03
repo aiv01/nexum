@@ -45,8 +45,8 @@ public class IsActive : MonoBehaviour
         switchPlayer_.performed += Switch;
 
         pause_ = Key.Player.Pause;
-        pause_.Enable();
         pause_.performed += Pause;
+        pause_.Enable();
     }
     private void OnDisable()
     {
@@ -55,8 +55,8 @@ public class IsActive : MonoBehaviour
         SwitchCamera.UnRegister(EllenCamera);
         SwitchCamera.UnRegister(RobotCamera);
 
-        pause_.Disable();
         pause_.performed -= Pause;
+        pause_.Disable();
     }
 
     private void Switch(InputAction.CallbackContext callbackContext)

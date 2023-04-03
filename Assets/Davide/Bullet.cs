@@ -23,6 +23,8 @@ public class Bullet : MonoBehaviour
     Rigidbody MyRB;
     Collider myC;
     ParticleMgr particleMgr;
+
+    public Vector3 target;
     
     private void Awake()
     {
@@ -35,9 +37,14 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        MyRB.velocity = transform.forward * speed;
-
         StartCoroutine(nameof(MaxLifespan));
+    }
+
+
+    private void Update()
+    {
+        Vector3 moving = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        transform.position = moving;
     }
 
     IEnumerator MaxLifespan()

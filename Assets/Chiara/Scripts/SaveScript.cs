@@ -5,21 +5,35 @@ using System.IO;
 [DisallowMultipleComponent]
 public class SaveScript : MonoBehaviour
 {
+    static bool singleton = false;
+
     [SerializeField]
     private string[] scenes;
     [SerializeField]
-    private string savePath = "Assets/SaveFile.Nexum";
+    private string savePath = "SaveFile.Nexum";
     [SerializeField]
     private int totalLevels = 3;  //!!!level numbers start from 1 not 0!!!
-    [SerializeField]
+
     private int saveFileNumber;
+
+    public int SaveFileNumber {
+        get  { return saveFileNumber; }
+        set { saveFileNumber = value < 0 ? 0 : value > 3 ? 3 : value; }
+    
+    }
 
     private int currSceneIdx = 0;
     private string[] saveValues;
 
+    private void Awake()
+    {
+        if (singleton)
+            Destroy(this);
+
+        singleton = true;
+    }
     private void Start()
     {
-        savePath = savePath + "_" + saveFileNumber + ".Nexum";
         DontDestroyOnLoad(gameObject);
         if (!File.Exists(savePath))
         {
@@ -32,7 +46,7 @@ public class SaveScript : MonoBehaviour
         }
         saveValues = File.ReadAllLines(savePath);
         GetStartSceneIdx();
-        Save();
+        //Save();
         //Load();
     }
 
@@ -81,24 +95,27 @@ public class SaveScript : MonoBehaviour
     }
     public void Load()
     {
-        SceneManager.LoadScene(scenes[currSceneIdx]);
-        Debug.Log("Loaded scene: " + currSceneIdx);
+        //SceneManager.LoadScene(scenes[currSceneIdx]);
+        //Debug.Log("Loaded scene: " + currSceneIdx);
     }
     public void ResetSaveFile() //call ONLY after SetSaveFileNumber()
     {
         saveValues[saveFileNumber] = "0"; //file does not exist yet
         File.WriteAllLines(savePath, saveValues);
     }
+
     public void LevelUp() //call when switching to next level
     {
         currSceneIdx += currSceneIdx < totalLevels ? 1 : 0; //avoid overflow
-        Save();
-        Load();
+    //    Save();
+    //    Load();
     }
-    public void SelectSaveFileByNumber(int n)
-    {
-        saveFileNumber = n;
-    }
+
+    // Divenuto una proprietà
+    //public void SelectSaveFileByNumber(int n)
+    //{
+    //    saveFileNumber = n;
+    //}
     public bool SaveFileExists(int n)
     {
         int num;
@@ -113,8 +130,10 @@ public class SaveScript : MonoBehaviour
     {
         if (!SaveFileExists(saveFile)) return false;
         string[] values = saveValues[saveFile].Split(',');
+        Debug.Log(values);
         bool completed = false;
         bool.TryParse(values[level], out completed);
         return completed;
     }
+
 }
