@@ -50,7 +50,7 @@ public class ChomperAIManager : MonoBehaviour
             return;
         }
 
-        if(other.tag == "Human")
+        if(other.tag == "Player")
         {
             patrol.enabled = false;
             follow.enabled = true;
