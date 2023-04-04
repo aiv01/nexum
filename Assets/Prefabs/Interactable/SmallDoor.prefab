@@ -48,7 +48,7 @@ MonoBehaviour:
   isInverted: 0
   doorOpenLocation: {x: 0, y: -3, z: 0}
   innerDoor: {fileID: 7122928984253642443}
-  doorSpeed: 5
+  doorSpeed: 1.6
 --- !u!1001 &7122928984253508681
 PrefabInstance:
   m_ObjectHideFlags: 0
