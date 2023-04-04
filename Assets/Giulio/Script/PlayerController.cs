@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     void input()
     {
-
+        Debug.Log(isGrounded());
         if (isGrounded()) //jump
         {
             animatorController.SetBool("isGround", true);
@@ -169,17 +169,20 @@ public class PlayerController : MonoBehaviour
         }
 
         if (run_.IsPressed()) //run
-        {
-            isRunning = !isRunning;
-        }
+            isRunning = true;
+
+        else
+            isRunning = false;
 
 
 
     }
+
+    public float groundLine = .5f;
     bool isGrounded()
     {
         if (isShoot) return true;
-        return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, .5f, mask) && ySpeed < 0;
+        return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, groundLine, mask) && ySpeed < 0;
     }
 
     void UPDATE_Direction()

@@ -45,11 +45,15 @@ public class HoldableObject : Interactable
         {
             Debug.Log("BUTTO PER TERRA LE COSE");
             transform.position = dropZone.position;
-            visibleDropPosition.transform.position = Vector3.down * -10;
+            visibleDropPosition.gameObject.SetActive(false);
+            //visibleDropPosition.transform.position = Vector3.right * -100;
             HoverVFX.enabled = false;
         }
         else
+        {
             HoverVFX.enabled = true;
+            visibleDropPosition.gameObject.SetActive(true);
+        }
         #region old
         /*if (isHolding)
         {
