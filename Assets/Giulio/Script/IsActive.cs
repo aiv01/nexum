@@ -3,6 +3,14 @@ using UnityEngine;
 using Cinemachine;
 using System.Collections;
 
+public enum NexumPlayer
+{
+    None = 0,
+    Marie = 1,
+    Robot = 2,
+    Last
+}
+
 public class IsActive : MonoBehaviour
 {
     [SerializeField] private CharacterController Ellen;
@@ -24,6 +32,8 @@ public class IsActive : MonoBehaviour
     [SerializeField]
     private UnityEngine.Events.UnityEvent onPauseRequrested;
 
+    private NexumPlayer currentPlayer = NexumPlayer.None;
+
     private void Awake()
     {
         Key = new InputPlayer();
@@ -38,7 +48,11 @@ public class IsActive : MonoBehaviour
     {
         SwitchCamera.Register(EllenCamera);
         SwitchCamera.Register(RobotCamera);
-        SwitchCamera.SwitchCam(EllenCamera);
+        if (currentPlayer == NexumPlayer.Robot)
+            SwitchCamera.SwitchCam(RobotCamera);
+
+        else
+            SwitchCamera.SwitchCam(EllenCamera);
 
         switchPlayer_ = Key.Player.Switch;
         switchPlayer_.Enable();
@@ -71,6 +85,7 @@ public class IsActive : MonoBehaviour
               EllenAnim.SetFloat("y", 0);
               RobotPlayerController.enabled = true;
               SwitchCamera.SwitchCam(RobotCamera);
+                currentPlayer = NexumPlayer.Robot;
             }    
            
         }
@@ -83,6 +98,7 @@ public class IsActive : MonoBehaviour
                 RobotAnim.SetFloat("y", 0);
                 EllenPlayerController.enabled = true;
                 SwitchCamera.SwitchCam(EllenCamera);
+                currentPlayer = NexumPlayer.Marie;
             //}
            
         }

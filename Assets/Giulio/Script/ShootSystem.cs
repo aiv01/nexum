@@ -83,6 +83,14 @@ public class ShootSystem : MonoBehaviour
             {
                 AimPos.position = Vector3.Lerp(AimPos.position, transform.position + Camera.main.transform.forward * maxAutoAimDistance, Smooth * Time.deltaTime);
             }
+
+            var k = transform.TransformPoint(AimPos.position);
+            //if (k.x * k.x > 25f)
+                //k.x = 5f + Mathf.Sign(k.x);
+            Debug.Log(k);
+
+            //AimPos.position = transform.InverseTransformPoint(k);
+
             gun.transform.LookAt(AimPos.position);
 
         }

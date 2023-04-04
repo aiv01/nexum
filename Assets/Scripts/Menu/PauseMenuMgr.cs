@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 
@@ -10,6 +11,7 @@ public class PauseMenuMgr : MonoBehaviour
     [SerializeField]
     Canvas Menu;
 
+
     [SerializeField]
     InputPlayer gameInput;
 
@@ -18,6 +20,10 @@ public class PauseMenuMgr : MonoBehaviour
     UnityEvent Enable;
     [SerializeField]
     UnityEvent Disable;
+
+    [SerializeField]
+    int mainMenuSceneID;
+
     private void OnEnable()
     {
         Menu.gameObject.SetActive(true);
@@ -30,5 +36,15 @@ public class PauseMenuMgr : MonoBehaviour
         Menu.gameObject.SetActive(false);
         Disable.Invoke();
         Time.timeScale = 1.0f;
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuSceneID);
+    }
+
+    public void ReloadSCene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -15,4 +15,5 @@ public class AI_BandAid : MonoBehaviour
     private void ActivateIK() { }
     private void Land() { }
     private void ShootGun() { }
+    private void PlayRunStep() { }
 }
