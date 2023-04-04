@@ -31,8 +31,8 @@ public class IsActive : MonoBehaviour
         RobotPlayerController = Robot.GetComponent<PlayerController>();
         RobotAnim = Robot.GetComponent<Animator>();
         EllenPlayerController = Ellen.GetComponent<PlayerController>();
-        EllenAnim = Ellen.GetComponent<Animator>();
     }
+
 
     private void OnEnable()
     {
@@ -61,7 +61,8 @@ public class IsActive : MonoBehaviour
 
     private void Switch(InputAction.CallbackContext callbackContext)
     {
-        
+
+  
         if (SwitchCamera.IsActiveCam(EllenCamera))
         {
             if(Ellen.isGrounded)
@@ -71,20 +72,17 @@ public class IsActive : MonoBehaviour
               EllenAnim.SetFloat("y", 0);
               RobotPlayerController.enabled = true;
               SwitchCamera.SwitchCam(RobotCamera);
+               
             }    
            
         }
         else if (SwitchCamera.IsActiveCam(RobotCamera))
         {
-            //if (RobotController.isGrounded)
-            //{
                 RobotPlayerController.enabled = false;
                 RobotAnim.SetFloat("x", 0);
                 RobotAnim.SetFloat("y", 0);
                 EllenPlayerController.enabled = true;
                 SwitchCamera.SwitchCam(EllenCamera);
-            //}
-           
         }
  
      }
