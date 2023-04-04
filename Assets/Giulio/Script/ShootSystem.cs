@@ -39,7 +39,7 @@ public class ShootSystem : MonoBehaviour
 
     private void OnEnable()
     {
-        SwitchCamera.Register(AimCamOn);
+        //SwitchCamera.Register(AimCamOn);
         SwitchCamera.Register(AimCamOff);
 
         gunUp_ = PlayerInput_.Player.GunAim;
@@ -54,8 +54,8 @@ public class ShootSystem : MonoBehaviour
         gunUp_.Disable();
         gunShoot_.Disable();
 
-        SwitchCamera.UnRegister(AimCamOn);
-        SwitchCamera.UnRegister(AimCamOff);
+        //SwitchCamera.UnRegister(AimCamOn);
+        //SwitchCamera.UnRegister(AimCamOff);
     }
 
     public float IKMax = .5f;

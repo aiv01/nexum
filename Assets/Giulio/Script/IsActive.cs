@@ -11,6 +11,7 @@ public class IsActive : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera EllenCamera;
     [SerializeField] private CinemachineVirtualCamera RobotCamera;
 
+
     /*[SerializeField]*/ private PlayerController RobotPlayerController;
     /*[SerializeField]*/ private PlayerController EllenPlayerController;
     /*[SerializeField]*/ private Animator EllenAnim;
@@ -20,6 +21,10 @@ public class IsActive : MonoBehaviour
 
     private InputAction switchPlayer_;
     private InputAction pause_;
+
+    bool CannotSwitch = false; 
+
+
 
     [SerializeField]
     private UnityEngine.Events.UnityEvent onPauseRequrested;
@@ -59,10 +64,14 @@ public class IsActive : MonoBehaviour
         pause_.Disable();
     }
 
+    public void ChangeSwitchState(bool state)
+    {
+        Debug.Log("Switch state:" + state);
+        CannotSwitch = state;
+    }
     private void Switch(InputAction.CallbackContext callbackContext)
     {
-
-  
+        
         if (SwitchCamera.IsActiveCam(EllenCamera))
         {
             if(Ellen.isGrounded)

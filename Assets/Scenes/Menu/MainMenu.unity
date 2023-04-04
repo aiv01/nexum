@@ -1570,7 +1570,6 @@ MonoBehaviour:
   Exit_Menu: {fileID: 2025016506}
   LevelSelectionScene: 1
   newGameScene: 2
-  save: {fileID: 551135997}
 --- !u!114 &1572254793
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -65,12 +65,15 @@ public class Bullet : MonoBehaviour
         if (vfx == null) { Debug.LogWarning("Manca Particella"); return; }
         var cp = collision.GetContact(0);
 
-        RaycastHit hitfo;
+
+        if (collision.gameObject.GetComponent<Renderer>() == null) return;
+
+            RaycastHit hitfo;
 
         if (Physics.Raycast(myC.bounds.center, -cp.normal, out hitfo, 1))
         {
             Texture tex = collision.gameObject.GetComponent<Renderer>().material.mainTexture;
-            
+            if (tex == null) return;
             var rt = RenderTexture.GetTemporary(tex.width, tex.height);
 
             Graphics.Blit(tex, rt, new Material(Shader.Find("Unlit/Texture")));

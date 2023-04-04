@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class NextLevelPoint : MonoBehaviour
 {
@@ -8,11 +9,15 @@ public class NextLevelPoint : MonoBehaviour
     {
         save = GameObject.Find("DontDestroyOnLoad").GetComponent<SaveScript>();
     }
+
+
+    public int nextLevelID;
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
             save.LevelUp();
+            SceneManager.LoadScene(nextLevelID);
         }
     }
 }
