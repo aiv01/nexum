@@ -54,7 +54,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0312a058e05c2d44ebd9bdb396a2c643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorClipPath: Assets/SFX/Objects/Door/Door.mp3
-  boxClipPath: Assets/SFX/Objects/Box/Box_Drop.ogg
-  switchClipPath: Assets/SFX/Objects/Switches and Pressure Plates/Switch_Activated_03.ogg
-  pressurePlateClipPath: Assets/SFX/Objects/Switches and Pressure Plates/Switch_Activated_02.ogg
-  shootClipPath: Assets/SFX/Objects/Shoot/Shoot_SFX.ogg
-  ambienceClipPath: Assets/SFX/Objects/Ambience/Atmos_Underground_03.ogg
+  door: {fileID: 8300000, guid: ea1b53a5f4f1fb344a02e71bcf3dcb45, type: 3}
+  box: {fileID: 8300000, guid: 049f75201156a404298555339cde618e, type: 3}
+  energySwitch: {fileID: 8300000, guid: c0986a0af48c64529ac1a45d2ac27f7a, type: 3}
+  pressurePlate: {fileID: 8300000, guid: 49d0a9fcf5f5743c487432c9a5b15998, type: 3}
+  shoot: {fileID: 8300000, guid: 60c8890c93a77451c9ca33ec63e1bbf4, type: 3}
+  ambience: {fileID: 8300000, guid: 5b08659333dfd4077b487af384fbea10, type: 3}
