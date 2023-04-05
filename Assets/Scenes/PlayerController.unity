@@ -5414,6 +5414,7 @@ MonoBehaviour:
   canIJump: 1
   jumpSpeed: 10
   ySpeed: 0
+  groundLine: 0.5
 --- !u!143 &1889905509146599478
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6211,6 +6212,7 @@ MonoBehaviour:
   canIJump: 0
   jumpSpeed: 0
   ySpeed: 0
+  groundLine: 0.5
 --- !u!114 &5412594308265862505
 MonoBehaviour:
   m_ObjectHideFlags: 0
