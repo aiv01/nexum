@@ -28,6 +28,7 @@ public class PauseMenuMgr : MonoBehaviour
     {
         Menu.gameObject.SetActive(true);
         Enable.Invoke();
+        Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0.0f;
 
     }
@@ -35,6 +36,7 @@ public class PauseMenuMgr : MonoBehaviour
     {
         Menu.gameObject.SetActive(false);
         Disable.Invoke();
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1.0f;
     }
 
