@@ -1,5 +1,4 @@
 Aggiungere menu Opzioni (Inverti assi / Musica)
-Scambiare Tasti Scambio Player[Q] e Interact [E]
 Disattivae CC Quando teletrasporti player
 Abbassare Rumore Passi Robot
 Differenziare graficamente piattaforme pesanti
