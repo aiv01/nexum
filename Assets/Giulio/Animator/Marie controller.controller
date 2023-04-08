@@ -437,7 +437,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: gun
     m_StateMachine: {fileID: 7400153346581030899}
-    m_Mask: {fileID: 0}
+    m_Mask: {fileID: 31900000, guid: 376ae134f82758b42ad2b11488c7dc82, type: 2}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
@@ -660,7 +660,7 @@ AnimatorStateMachine:
     m_Position: {x: 630, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 284511274748673086}
-    m_Position: {x: 120, y: 150, z: 0}
+    m_Position: {x: 130, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -461065330198911289}
     m_Position: {x: 480, y: 50, z: 0}

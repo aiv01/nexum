@@ -63,6 +63,8 @@ public class HoldableObject : Interactable
             transform.rotation = player.transform.rotation;
 
         }
+
+    }
         #region old
         /*if (isHolding)
         {
@@ -81,8 +83,6 @@ public class HoldableObject : Interactable
             player.transform.position = realPosition.position;
         }*/
         #endregion
-
-    }
 
     IEnumerator ReactivateCollider()
     {
