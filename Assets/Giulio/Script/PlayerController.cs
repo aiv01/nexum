@@ -189,7 +189,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public float groundLine = .5f;
-    bool isGrounded()
+    public bool isGrounded()
     {
         if (isShoot) return true;
         return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, groundLine, mask) && ySpeed < 0;
