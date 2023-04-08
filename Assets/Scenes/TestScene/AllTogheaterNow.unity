@@ -3128,7 +3128,6 @@ MonoBehaviour:
   Robot: {fileID: 5412594308265862503}
   EllenCamera: {fileID: 158830282638566649}
   RobotCamera: {fileID: 4542285895340150782}
-  AnimationClip_: {fileID: 7400000, guid: bc6699013ea038d4e9bee2de648ace99, type: 2}
   onPauseRequrested:
     m_PersistentCalls:
       m_Calls:
