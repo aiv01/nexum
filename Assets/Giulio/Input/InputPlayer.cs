@@ -236,7 +236,7 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""42c10357-d9e2-45d2-b4e0-af93505204fe"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -280,7 +280,7 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec0acf60-b22f-4b6b-9720-61910035693f"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
