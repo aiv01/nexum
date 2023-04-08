@@ -46,7 +46,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -142,7 +142,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -247,5 +247,6 @@ MonoBehaviour:
   pressurePlate: {fileID: 8300000, guid: 49d0a9fcf5f5743c487432c9a5b15998, type: 3}
   shoot: {fileID: 8300000, guid: 60c8890c93a77451c9ca33ec63e1bbf4, type: 3}
   ambience: {fileID: 8300000, guid: 5b08659333dfd4077b487af384fbea10, type: 3}
-  menuMusic: {fileID: 8300000, guid: afe095d2ceea47542b23af70452ed9fc, type: 3}
-  levelMusic: {fileID: 8300000, guid: 9285c9e7bcdc74742b944767a1d5bc39, type: 3}
+  menuMusic: {fileID: 8300000, guid: 3a0b10bf22a994a5e9b939c974756a24, type: 3}
+  levelMusic: {fileID: 8300000, guid: eb3920a2d9adb5048952e2d32470dcd7, type: 3}
+  levelEndClip: {fileID: 8300000, guid: c0548ebfa9eb2084a99a8eaa1a6691f4, type: 3}

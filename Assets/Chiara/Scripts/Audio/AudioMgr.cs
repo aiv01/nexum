@@ -33,6 +33,8 @@ public class AudioMgr : MonoBehaviour
     private AudioClip menuMusic;
     [SerializeField]
     private AudioClip levelMusic;
+    [SerializeField]
+    private AudioClip levelEndClip;
 
     private void Start()
     {
@@ -44,14 +46,20 @@ public class AudioMgr : MonoBehaviour
         {
             case AmbienceType.MainMenu:
                 jingleSource.clip = menuMusic;
+                jingleSource.volume = 1;
                 break;
             case AmbienceType.Level:
                 jingleSource.clip = levelMusic;
+                jingleSource.volume = 0.1f;
                 ambientSource.clip = ambience;
                 ambientSource.Play();
                 break;
         }
         jingleSource.Play();
+    }
+    public void LevelEnd()
+    {
+        ambientSource.PlayOneShot(levelEndClip);
     }
     public void OpenCloseDoor()
     {

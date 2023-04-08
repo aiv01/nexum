@@ -4,6 +4,8 @@ using UnityEngine;
 public class CharacterAudio : MonoBehaviour
 {
     [SerializeField]
+    private bool isRobot;
+    [SerializeField]
     private AudioClip[] walkStepClips;
     [SerializeField]
     private AudioClip[] runStepClips;
@@ -19,7 +21,15 @@ public class CharacterAudio : MonoBehaviour
 
     private void PlayStep()
     {
-        source.PlayOneShot(walkStepClips[Random.Range(0, walkStepClips.Length)]);
+        AudioClip stepClip = walkStepClips[Random.Range(0, walkStepClips.Length)];
+        if (isRobot)
+        {
+            AudioSource.PlayClipAtPoint(stepClip, transform.position);
+        }
+        else
+        {
+            source.PlayOneShot(stepClip);
+        }
     }
     private void PlayRunStep()
     {
