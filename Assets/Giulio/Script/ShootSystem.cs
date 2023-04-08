@@ -23,7 +23,7 @@ public class ShootSystem : MonoBehaviour
     [SerializeField] float Smooth;
     [SerializeField] float FOV;
     [SerializeField] LayerMask layerMask;
-    [SerializeField] Camera CamAim;
+    [SerializeField] Vector3 noHitOffset;
     [SerializeField] float maxAutoAimDistance = 5;
 
 
@@ -39,7 +39,6 @@ public class ShootSystem : MonoBehaviour
 
     private void OnEnable()
     {
-        //SwitchCamera.Register(AimCamOn);
         SwitchCamera.Register(AimCamOff);
 
         gunUp_ = PlayerInput_.Player.GunAim;
@@ -54,7 +53,6 @@ public class ShootSystem : MonoBehaviour
         gunUp_.Disable();
         gunShoot_.Disable();
 
-        //SwitchCamera.UnRegister(AimCamOn);
         SwitchCamera.UnRegister(AimCamOff);
     }
 
@@ -62,18 +60,21 @@ public class ShootSystem : MonoBehaviour
     public float IKIncrement = .5f;
     private float IKStr = 0f;
 
+    private bool IncrementIK = false;
+
+
     private void Update()
     {
         Input();
 
 
-        if (myPC.isShoot)
+        if (IncrementIK)
         {
             if (IKStr < IKMax)
                 IKStr += IKIncrement * Time.deltaTime;
 
             Vector2 ScreenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
-            Ray ray_ = CamAim.ScreenPointToRay(ScreenCenter);
+            Ray ray_ = Camera.main.ScreenPointToRay(ScreenCenter);
 
             if (Physics.Raycast(ray_, out RaycastHit hit, maxAutoAimDistance, layerMask))
             {
@@ -81,15 +82,16 @@ public class ShootSystem : MonoBehaviour
             }
             else
             {
-                AimPos.position = Vector3.Lerp(AimPos.position, transform.position + Camera.main.transform.forward * maxAutoAimDistance, Smooth * Time.deltaTime);
+                AimPos.position = Vector3.Lerp(AimPos.position, transform.position + Camera.main.transform.forward * maxAutoAimDistance + noHitOffset, Smooth * Time.deltaTime);
             }
 
-            var k = transform.TransformPoint(AimPos.position);
-            //if (k.x * k.x > 25f)
-                //k.x = 5f + Mathf.Sign(k.x);
-            Debug.Log(k);
 
-            //AimPos.position = transform.InverseTransformPoint(k);
+            var k = transform.InverseTransformPoint(AimPos.position).normalized;
+            if (k.x * k.x > .25f || k.z < 0)
+            {
+                transform.Rotate(transform.up * Mathf.Sign(k.x) * 5f);
+                //transform.forward = (Vector3.ProjectOnPlane(aimDirection, transform.up));
+            }
 
             gun.transform.LookAt(AimPos.position);
 
@@ -108,7 +110,7 @@ public class ShootSystem : MonoBehaviour
         if (b == null) return;
         b.transform.position = gun.transform.position;
         b.transform.LookAt(AimPos.position);
-        b.target = AimPos.position;
+        b.ChangeTarget(AimPos.position);
     }
     private void OnAnimatorIK(int layerIndex)
     {
@@ -133,14 +135,16 @@ public class ShootSystem : MonoBehaviour
     }
     private void Input()
     {
+        if (!myPC.isGrounded()) { Debug.Log("NOT GRD"); return; }
+
         if (gunUp_.WasPressedThisFrame())
         {
-            Debug.Log("EFS>DV");
             if (SwitchCamera.IsActiveCam(AimCamOff))
             {
                 SwitchCamera.SwitchCam(AimCamOn);
                 //transform.rotation = AimPos.transform.rotation;
                 myPC.isShoot = true;
+                IncrementIK = true;
                 IKStr = 0.01f;
                 myAnim.SetBool("isAiming", true);
 
@@ -150,15 +154,6 @@ public class ShootSystem : MonoBehaviour
         }
         if (!myPC.isShoot) return;
 
-        Vector3 aimDirection = (AimPos.position - gun.transform.position).normalized;
-
-        Debug.Log(Vector3.Dot( aimDirection, transform.forward));
-
-        if (Vector3.Dot(aimDirection, transform.forward) < .75f)
-        {
-            
-        }
-
 
         if (gunShoot_.triggered) // shoot
         {
@@ -167,9 +162,8 @@ public class ShootSystem : MonoBehaviour
 
         if (gunUp_.WasReleasedThisFrame() && SwitchCamera.IsActiveCam(AimCamOn))
         {
-            myPC.isShoot = false;
+            IncrementIK = false;
             myAnim.SetBool("isAiming", false);
-            SwitchCamera.SwitchCam(AimCamOff);
         }
     }
 
@@ -178,5 +172,7 @@ public class ShootSystem : MonoBehaviour
     }
     private void PutAwayGun()
     {
+        SwitchCamera.SwitchCam(AimCamOff);
+        myPC.isShoot = false;
     }
 }
