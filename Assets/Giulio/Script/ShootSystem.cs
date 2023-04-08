@@ -55,7 +55,7 @@ public class ShootSystem : MonoBehaviour
         gunShoot_.Disable();
 
         //SwitchCamera.UnRegister(AimCamOn);
-        //SwitchCamera.UnRegister(AimCamOff);
+        SwitchCamera.UnRegister(AimCamOff);
     }
 
     public float IKMax = .5f;
@@ -135,11 +135,11 @@ public class ShootSystem : MonoBehaviour
     {
         if (gunUp_.WasPressedThisFrame())
         {
-
+            Debug.Log("EFS>DV");
             if (SwitchCamera.IsActiveCam(AimCamOff))
             {
                 SwitchCamera.SwitchCam(AimCamOn);
-                transform.rotation = AimPos.transform.rotation;
+                //transform.rotation = AimPos.transform.rotation;
                 myPC.isShoot = true;
                 IKStr = 0.01f;
                 myAnim.SetBool("isAiming", true);
@@ -149,6 +149,16 @@ public class ShootSystem : MonoBehaviour
 
         }
         if (!myPC.isShoot) return;
+
+        Vector3 aimDirection = (AimPos.position - gun.transform.position).normalized;
+
+        Debug.Log(Vector3.Dot( aimDirection, transform.forward));
+
+        if (Vector3.Dot(aimDirection, transform.forward) < .75f)
+        {
+            
+        }
+
 
         if (gunShoot_.triggered) // shoot
         {

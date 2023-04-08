@@ -3,6 +3,14 @@ using UnityEngine;
 using Cinemachine;
 using System.Collections;
 
+public enum NexumPlayer
+{
+    None = 0,
+    Marie = 1,
+    Starfire = 2,
+    Last
+}
+
 public class IsActive : MonoBehaviour
 {
     [SerializeField] private CharacterController Ellen;
@@ -22,9 +30,9 @@ public class IsActive : MonoBehaviour
     private InputAction switchPlayer_;
     private InputAction pause_;
 
-    bool CannotSwitch = false; 
+    bool CannotSwitch = false;
 
-
+    NexumPlayer currentPlayer = NexumPlayer.None;
 
     [SerializeField]
     private UnityEngine.Events.UnityEvent onPauseRequrested;
@@ -36,6 +44,7 @@ public class IsActive : MonoBehaviour
         RobotPlayerController = Robot.GetComponent<PlayerController>();
         RobotAnim = Robot.GetComponent<Animator>();
         EllenPlayerController = Ellen.GetComponent<PlayerController>();
+        EllenAnim = Ellen.GetComponent<Animator>();
     }
 
 
@@ -43,7 +52,12 @@ public class IsActive : MonoBehaviour
     {
         SwitchCamera.Register(EllenCamera);
         SwitchCamera.Register(RobotCamera);
-        SwitchCamera.SwitchCam(EllenCamera);
+
+        if (currentPlayer == NexumPlayer.Starfire)
+            SwitchCamera.SwitchCam(RobotCamera);
+
+        else
+            SwitchCamera.SwitchCam(EllenCamera);
 
         switchPlayer_ = Key.Player.Switch;
         switchPlayer_.Enable();
@@ -80,6 +94,7 @@ public class IsActive : MonoBehaviour
               EllenAnim.SetFloat("x", 0);
               EllenAnim.SetFloat("y", 0);
               RobotPlayerController.enabled = true;
+                currentPlayer = NexumPlayer.Starfire;
               SwitchCamera.SwitchCam(RobotCamera);
                
             }    
@@ -91,6 +106,7 @@ public class IsActive : MonoBehaviour
                 RobotAnim.SetFloat("x", 0);
                 RobotAnim.SetFloat("y", 0);
                 EllenPlayerController.enabled = true;
+            currentPlayer = NexumPlayer.Marie;
                 SwitchCamera.SwitchCam(EllenCamera);
         }
  

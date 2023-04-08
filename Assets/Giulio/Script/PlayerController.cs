@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movment")]
     [SerializeField]  float playerSpeed = 2.0f;
-    [SerializeField]  float SmoorhBlend = 0.1f;
+    [SerializeField]  float SmoorhBlend = 1f;
     [SerializeField]  float sensitivity = 0.5f; 
     [SerializeField]  float turnSpeed = 10f;
     [SerializeField]  float groundDrag = 3f;
@@ -143,11 +143,12 @@ public class PlayerController : MonoBehaviour
 
         animatorController.SetFloat("x", movment.x, SmoorhBlend, Time.deltaTime);
         animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
+
     }
 
     void input()
     {
-
+        Debug.Log(isGrounded());
         if (isGrounded()) //jump
         {
             animatorController.SetBool("isGround", true);
@@ -169,17 +170,20 @@ public class PlayerController : MonoBehaviour
         }
 
         if (run_.IsPressed()) //run
-        {
-            isRunning = !isRunning;
-        }
+            isRunning = true;
+
+        else
+            isRunning = false;
 
 
 
     }
+
+    public float groundLine = .5f;
     bool isGrounded()
     {
         if (isShoot) return true;
-        return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, .5f, mask) && ySpeed < 0;
+        return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, groundLine, mask) && ySpeed < 0;
     }
 
     void UPDATE_Direction()

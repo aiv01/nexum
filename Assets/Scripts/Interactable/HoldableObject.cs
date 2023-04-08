@@ -44,12 +44,27 @@ public class HoldableObject : Interactable
         if (!isHolding)
         {
             Debug.Log("BUTTO PER TERRA LE COSE");
-            transform.position = dropZone.position;
-            visibleDropPosition.transform.position = Vector3.down * -10;
+            //transform.position = dropZone.position;
+            visibleDropPosition.gameObject.SetActive(false);
+            //visibleDropPosition.transform.position = Vector3.right * -100;
             HoverVFX.enabled = false;
+            myRB.isKinematic = false;
+            myRB.velocity = player.transform.forward * 4f;
+            Debug.Log(player.velocity);
+            transform.parent = null;
         }
         else
+        {
             HoverVFX.enabled = true;
+            visibleDropPosition.gameObject.SetActive(true);
+            transform.parent = player.transform;
+            myRB.isKinematic = true;
+            transform.position = player.transform.position + holdOffset;
+            transform.rotation = player.transform.rotation;
+
+        }
+
+    }
         #region old
         /*if (isHolding)
         {
@@ -69,8 +84,6 @@ public class HoldableObject : Interactable
         }*/
         #endregion
 
-    }
-
     IEnumerator ReactivateCollider()
     {
         yield return new WaitForSeconds(.5f);
@@ -82,8 +95,8 @@ public class HoldableObject : Interactable
         if (isHolding)
         {
             //myRB.velocity = player.velocity;
-            transform.position = player.transform.position + holdOffset;
-            transform.rotation = player.transform.rotation;
+            //transform.position = player.transform.position + holdOffset;
+            //transform.rotation = player.transform.rotation;
 
             RaycastHit hitfo;
             if (Physics.Raycast(dropZone.position, Vector3.down, out hitfo, 50f, layerMask: 8))

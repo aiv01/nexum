@@ -1,0 +1,8 @@
+Aggiungere menu Opzioni (Inverti assi / Musica)
+Disattivae CC Quando teletrasporti player
+Abbassare Rumore Passi Robot
+Differenziare graficamente piattaforme pesanti
+Razzrizzare Corsa
+Collisioni Cassa
+Riaggiungere Sparo
+Riempire Scene

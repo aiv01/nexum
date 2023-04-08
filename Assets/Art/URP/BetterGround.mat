@@ -233,10 +233,10 @@ Material:
     - _Is_Active: 0
     - _Metallic: 1
     - _Mode: 0
-    - _Moss_Strenght: 0.69
-    - _Normal_Strenght: 1
+    - _Moss_Strenght: 0.14
+    - _Normal_Strenght: 2
     - _OcclusionStrength: 0.878
-    - _Occlusion_Strenght: 0.466
+    - _Occlusion_Strenght: 0.844
     - _Parallax: 0.08
     - _ParallaxStrength: 0
     - _QueueControl: 0
@@ -270,12 +270,12 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emissive_Active: {r: 0.1098039, g: 1.129412, b: 4, a: 1}
+    - _Emissive_Active: {r: 0.10076055, g: 0.10076055, b: 0.10076055, a: 1}
     - _Emissive_Inactive: {r: 0, g: 0, b: 0, a: 0}
     - _GrassColor: {r: 1, g: 1, b: 1, a: 1}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tiling: {r: 2, g: 2, b: 0, a: 0}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _Top_Layer_Detail_Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Top_Layer_Detail_Tiling: {r: 3, g: 3, b: 0, a: 0}

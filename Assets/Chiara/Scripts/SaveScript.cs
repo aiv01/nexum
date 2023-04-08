@@ -31,12 +31,14 @@ public class SaveScript : MonoBehaviour
             Destroy(this);
 
         singleton = true;
+        //savePath =savePath;
     }
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
         if (!File.Exists(savePath))
         {
+            //File.Create(savePath);
             saveValues = new string[3];
             for(int i = 0; i < 3; i++)
             {
@@ -107,7 +109,7 @@ public class SaveScript : MonoBehaviour
     public void LevelUp() //call when switching to next level
     {
         currSceneIdx += currSceneIdx < totalLevels ? 1 : 0; //avoid overflow
-    //    Save();
+        Save();
     //    Load();
     }
 

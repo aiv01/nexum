@@ -66,7 +66,7 @@ public class Bullet : MonoBehaviour
         var cp = collision.GetContact(0);
 
 
-        if (collision.gameObject.GetComponent<Renderer>() == null) return;
+        /*if (collision.gameObject.GetComponent<Renderer>() == null) return;
 
             RaycastHit hitfo;
 
@@ -90,7 +90,7 @@ public class Bullet : MonoBehaviour
             var c = finalTex.GetPixel((int)ics, (int)ipsilon) * n;
             Debug.Log(c);
             vfx.SetVector4("SurfaceColor", new Vector4(c.r, c.g, c.b, 1));
-        }
+        }*/
         vfx.transform.position = cp.point;
         vfx.transform.forward = cp.normal;
 

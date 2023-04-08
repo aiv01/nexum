@@ -236,7 +236,7 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""42c10357-d9e2-45d2-b4e0-af93505204fe"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -269,8 +269,8 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2df6b76f-ce84-42dd-9ea8-edf457a06ef1"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
-                    ""interactions"": """",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Run"",
@@ -280,7 +280,7 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ec0acf60-b22f-4b6b-9720-61910035693f"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -376,7 +376,7 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                     ""id"": ""00cf1eda-3679-422f-8f88-5fda9e46ccfa"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=5,y=5)"",
+                    ""processors"": ""ScaleVector2(x=20,y=20)"",
                     ""groups"": """",
                     ""action"": ""Mouse/Controller"",
                     ""isComposite"": false,
@@ -773,6 +773,17 @@ public partial class @InputPlayer : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse;Gamepad;Touch;Joystick;XR"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ce19091-2c90-445d-98f9-c99b5b459105"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
