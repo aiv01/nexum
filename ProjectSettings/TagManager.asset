@@ -34,7 +34,7 @@ TagManager:
   - HumanInteractable
   - RobotInteractable
   - BothInteractable
-  - 
+  - Bullet
   - 
   - 
   - 

@@ -9,16 +9,11 @@ using UnityEngine.VFX;
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour
 {
-
-    [SerializeField]
-    float n = 10;
     [SerializeField]
     float speed = 5f;
     [SerializeField]
     float lifeSpan = 2f;
 
-    [SerializeField]
-    UnityEvent onImpactEvent;
 
     Rigidbody MyRB;
     Collider myC;
@@ -43,8 +38,14 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        Vector3 moving = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        transform.position = moving;
+        //Vector3 moving = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+        //transform.position = moving;
+    }
+    public void ChangeTarget(Vector3 target)
+    {
+        //Debug.Log(transform.InverseTransformPoint(target)/*.normalized * speed*/);
+        this.target = target;
+        MyRB.velocity = ((target - transform.position).normalized * speed);
     }
 
     IEnumerator MaxLifespan()
@@ -59,9 +60,8 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Colpito");
-        onImpactEvent.Invoke();
         var vfx = particleMgr.GetBulletParticle(.5f);
+        collision.gameObject.SendMessage("Hit", null, SendMessageOptions.DontRequireReceiver);
         if (vfx == null) { Debug.LogWarning("Manca Particella"); return; }
         var cp = collision.GetContact(0);
 
@@ -94,6 +94,6 @@ public class Bullet : MonoBehaviour
         vfx.transform.position = cp.point;
         vfx.transform.forward = cp.normal;
 
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
