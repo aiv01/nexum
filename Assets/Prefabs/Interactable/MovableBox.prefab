@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 6470041853726609401}
   - component: {fileID: 6470041853726609398}
   - component: {fileID: 6470041853726609399}
-  - component: {fileID: 2349674551538782123}
+  - component: {fileID: 1307844452653833437}
   m_Layer: 23
   m_Name: MovableBox
   m_TagString: Interactable
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
---- !u!114 &2349674551538782123
+--- !u!114 &1307844452653833437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

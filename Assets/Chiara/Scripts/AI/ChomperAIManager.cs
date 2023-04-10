@@ -68,10 +68,10 @@ public class ChomperAIManager : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (hasReachedGoal) return;
+        attack.enabled = false;
         if (isFollowing) return;
         //from any state other than follow state return to patrol if not at goal position
         patrol.enabled = true;
-        attack.enabled = false;
         follow.enabled = false;
     }
 }

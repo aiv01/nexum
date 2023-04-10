@@ -3141,6 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68523476baf06641bcf23b0ce610dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 3926229865307763574}
   isRobot: 1
   walkStepClips:
   - {fileID: 8300000, guid: e7a1b19979fab4bf89f037c365af7143, type: 3}
@@ -3161,6 +3162,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 48e2b880efe944481bb0a00e09ad36f7, type: 3}
   runStepClips: []
   landClip: {fileID: 0}
+--- !u!95 &3926229865307763574 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 768352695974027262, guid: 102682ad533023149953c87809f0a9e0, type: 3}
+  m_PrefabInstance: {fileID: 4383543911621864584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4411018472893622734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 135789790637229382, guid: 102682ad533023149953c87809f0a9e0, type: 3}
@@ -3279,6 +3285,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68523476baf06641bcf23b0ce610dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7447805439052527139}
   isRobot: 0
   walkStepClips:
   - {fileID: 8300000, guid: 45cf9a7cea61c4a95bf6fdbce76f58ad, type: 3}
@@ -3326,6 +3333,11 @@ Transform:
 --- !u!4 &7447805439043198895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6597371446298178343, guid: 102682ad533023149953c87809f0a9e0, type: 3}
+  m_PrefabInstance: {fileID: 4383543911621864584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7447805439052527139 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6597371446291241643, guid: 102682ad533023149953c87809f0a9e0, type: 3}
   m_PrefabInstance: {fileID: 4383543911621864584}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7482100618542001069 stripped

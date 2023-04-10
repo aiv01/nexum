@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0247684, g: 0.20892528, b: 0.49981013, a: 1}
+  m_IndirectSpecularColor: {r: 0.0247684, g: 0.2089253, b: 0.49981022, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4952,6 +4952,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1533970929}
     m_Modifications:
+    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1597108025}
+    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DroppedBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AudioMgr, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
       propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
