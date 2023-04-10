@@ -141,18 +141,18 @@ public class PlayerController : MonoBehaviour
         controller.Move(move * Time.deltaTime * playerSpeed);
         controller.Move(PlayerVelocity * Time.deltaTime);
 
-        //animatorController.SetFloat("x", movment.x, SmoothBlend, Time.deltaTime);
-        //animatorController.SetFloat("y", movment.y, SmoothBlend, Time.deltaTime);
-        if (Mathf.Abs(movment.x) > 0.0000001f || Mathf.Abs(movment.y) > 0.0000001f)
-        {
-            animatorController.SetFloat("x", movment.x, SmoothBlend, Time.deltaTime);
-            animatorController.SetFloat("y", movment.y, SmoothBlend, Time.deltaTime);
-        }
-        else
-        {
-            animatorController.SetFloat("x", movment.x);
-            animatorController.SetFloat("y", movment.y);
-        }
+        animatorController.SetFloat("x", movment.x, SmoothBlend, Time.deltaTime);
+        animatorController.SetFloat("y", movment.y, SmoothBlend, Time.deltaTime);
+        //if (Mathf.Abs(movment.x) > 0.0000001f || Mathf.Abs(movment.y) > 0.0000001f)
+        //{
+        //    animatorController.SetFloat("x", movment.x, SmoothBlend, Time.deltaTime);
+        //    animatorController.SetFloat("y", movment.y, SmoothBlend, Time.deltaTime);
+        //}
+        //else
+        //{
+        //    animatorController.SetFloat("x", movment.x);
+        //    animatorController.SetFloat("y", movment.y);
+        //}
     }
 
     void input()
