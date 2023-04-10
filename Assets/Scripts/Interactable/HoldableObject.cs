@@ -16,6 +16,7 @@ public class HoldableObject : Interactable
     private Vector3 holdOffset = Vector3.up * 2;
 
     [SerializeField]
+    //private Collider boxCollider;
     private Collider activationCollider;
 
     [SerializeField]
@@ -49,6 +50,8 @@ public class HoldableObject : Interactable
             //visibleDropPosition.transform.position = Vector3.right * -100;
             HoverVFX.enabled = false;
             myRB.isKinematic = false;
+            //boxCollider.enabled = true;
+            //myRB.useGravity = true;
             myRB.velocity = player.transform.forward * 4f;
             Debug.Log(player.velocity);
             transform.parent = null;
@@ -58,6 +61,8 @@ public class HoldableObject : Interactable
             HoverVFX.enabled = true;
             visibleDropPosition.gameObject.SetActive(true);
             transform.parent = player.transform;
+            //boxCollider.enabled = false;
+            //myRB.useGravity = false;
             myRB.isKinematic = true;
             transform.position = player.transform.position + holdOffset;
             transform.rotation = player.transform.rotation;

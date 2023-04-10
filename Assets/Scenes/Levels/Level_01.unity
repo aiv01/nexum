@@ -4953,64 +4953,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 1533970929}
     m_Modifications:
     - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
       propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1597108025}
-    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DroppedBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioMgr, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1307844452653833437, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1597108025}
-    - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DroppedBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioMgr, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2349674551538782123, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: boxEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6470041853726609398, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
-      propertyPath: holdOffset.y
-      value: 4
+    - target: {fileID: 6470041853726609401, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
+      propertyPath: m_Mass
+      value: 10.13
       objectReference: {fileID: 0}
     - target: {fileID: 6470041853726609403, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
       propertyPath: m_RootOrder
@@ -5018,15 +4966,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6470041853726609403, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.429302
+      value: -28.7
       objectReference: {fileID: 0}
     - target: {fileID: 6470041853726609403, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 88.84398
+      value: 102.69
       objectReference: {fileID: 0}
     - target: {fileID: 6470041853726609403, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -118.07812
+      value: -63
       objectReference: {fileID: 0}
     - target: {fileID: 6470041853726609403, guid: 04ee5973c74f62245bffc3f000862de5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11958,7 +11906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1291794112
 MonoBehaviour:
   m_ObjectHideFlags: 0
