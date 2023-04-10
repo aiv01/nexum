@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movment")]
     [SerializeField]  float playerSpeed = 2.0f;
-    [SerializeField]  float SmoothBlend = 1f;
+    [SerializeField]  float SmoothBlend = .1f;
     [SerializeField]  float sensitivity = 0.5f; 
     [SerializeField]  float turnSpeed = 10f;
     [SerializeField]  float groundDrag = 3f;

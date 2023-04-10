@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
-  SmoorhBlend: 0.1
+  SmoothBlend: 0.1
   sensitivity: 0.5
   turnSpeed: 10
   groundDrag: 3
@@ -99,6 +99,7 @@ MonoBehaviour:
   canIJump: 0
   jumpSpeed: 0
   ySpeed: 0
+  groundLine: 0.5
 --- !u!143 &768352695974027263
 CharacterController:
   m_ObjectHideFlags: 0
@@ -4604,7 +4605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 4
-  SmoorhBlend: 0.1
+  SmoothBlend: 0.1
   sensitivity: 0.5
   turnSpeed: 10
   groundDrag: 3
@@ -4616,8 +4617,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 29884424
   canIJump: 1
-  jumpSpeed: 8
+  jumpSpeed: 6
   ySpeed: 0
+  groundLine: 0.5
 --- !u!143 &6597371446291241646
 CharacterController:
   m_ObjectHideFlags: 0
