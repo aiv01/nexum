@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 6470041853726609401}
   - component: {fileID: 6470041853726609398}
   - component: {fileID: 6470041853726609399}
+  - component: {fileID: 2349674551538782123}
   m_Layer: 23
   m_Name: MovableBox
   m_TagString: Interactable
@@ -208,6 +209,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
+--- !u!114 &2349674551538782123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470041853726609404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5adaafd6bdffcb34da0ca936964038ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6470041854149010977
 GameObject:
   m_ObjectHideFlags: 0

@@ -437,7 +437,7 @@ AnimatorController:
   - serializedVersion: 5
     m_Name: gun
     m_StateMachine: {fileID: 7400153346581030899}
-    m_Mask: {fileID: 31900000, guid: 376ae134f82758b42ad2b11488c7dc82, type: 2}
+    m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0

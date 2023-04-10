@@ -11,6 +11,7 @@ public class ChomperAIManager : MonoBehaviour
     private PatrolMovement patrol;
 
     private bool hasReachedGoal = false;
+    private bool isFollowing = false;
 
 
     void Start()
@@ -54,19 +55,21 @@ public class ChomperAIManager : MonoBehaviour
         {
             patrol.enabled = false;
             follow.enabled = true;
+            isFollowing = true;
             follow.SetTarget(other.transform);
         }
-        else if(other.tag == "Robot")
+        if(other.tag == "Robot")
         {
             patrol.enabled = false;
             attack.enabled = true;
             attack.SetTarget(other.transform);
         }
     }
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
         if (hasReachedGoal) return;
-        //from any state return to patrol if not at goal position
+        if (isFollowing) return;
+        //from any state other than follow state return to patrol if not at goal position
         patrol.enabled = true;
         attack.enabled = false;
         follow.enabled = false;

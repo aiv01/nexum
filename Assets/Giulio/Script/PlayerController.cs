@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Movment")]
     [SerializeField]  float playerSpeed = 2.0f;
-    [SerializeField]  float SmoorhBlend = 1f;
+    [SerializeField]  float SmoothBlend = 1f;
     [SerializeField]  float sensitivity = 0.5f; 
     [SerializeField]  float turnSpeed = 10f;
     [SerializeField]  float groundDrag = 3f;
@@ -141,14 +141,23 @@ public class PlayerController : MonoBehaviour
         controller.Move(move * Time.deltaTime * playerSpeed);
         controller.Move(PlayerVelocity * Time.deltaTime);
 
-        animatorController.SetFloat("x", movment.x, SmoorhBlend, Time.deltaTime);
-        animatorController.SetFloat("y", movment.y, SmoorhBlend, Time.deltaTime);
-
+        //animatorController.SetFloat("x", movment.x, SmoothBlend, Time.deltaTime);
+        //animatorController.SetFloat("y", movment.y, SmoothBlend, Time.deltaTime);
+        if (Mathf.Abs(movment.x) > 0.0000001f || Mathf.Abs(movment.y) > 0.0000001f)
+        {
+            animatorController.SetFloat("x", movment.x, SmoothBlend, Time.deltaTime);
+            animatorController.SetFloat("y", movment.y, SmoothBlend, Time.deltaTime);
+        }
+        else
+        {
+            animatorController.SetFloat("x", movment.x);
+            animatorController.SetFloat("y", movment.y);
+        }
     }
 
     void input()
     {
-        Debug.Log(isGrounded());
+        //Debug.Log(isGrounded());
         if (isGrounded()) //jump
         {
             animatorController.SetBool("isGround", true);
@@ -180,7 +189,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public float groundLine = .5f;
-    bool isGrounded()
+    public bool isGrounded()
     {
         if (isShoot) return true;
         return Physics.Raycast(transform.position + transform.up * .1f, Vector3.down, groundLine, mask) && ySpeed < 0;
