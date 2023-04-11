@@ -90,6 +90,7 @@ MonoBehaviour:
   turnSpeed: 10
   groundDrag: 3
   isShoot: 0
+  isGround: 0
   controller: {fileID: 768352695974027263}
   animatorController: {fileID: 768352695974027262}
   MainCamera: {fileID: 0}
@@ -4534,6 +4535,7 @@ GameObject:
   - component: {fileID: 6597371446291241646}
   - component: {fileID: 6597371446291241647}
   - component: {fileID: 6597371446291241632}
+  - component: {fileID: 3003155510918893739}
   m_Layer: 20
   m_Name: Ellen
   m_TagString: Player
@@ -4610,6 +4612,7 @@ MonoBehaviour:
   turnSpeed: 10
   groundDrag: 3
   isShoot: 0
+  isGround: 0
   controller: {fileID: 6597371446291241646}
   animatorController: {fileID: 6597371446291241643}
   MainCamera: {fileID: 0}
@@ -4662,6 +4665,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d1b38944ab94042a29181a18d83cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3003155510918893739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6597371446298667149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d3760360fe88c42868564ab73342d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AimCamOn: {fileID: 0}
+  AimCamOff: {fileID: 0}
+  AimPos: {fileID: 0}
+  Smooth: 20
+  FOV: 20
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 524296
+  noHitOffset: {x: 0, y: 1, z: 0}
+  maxAutoAimDistance: 10
+  gun: {fileID: 0}
+  MyBM: {fileID: 0}
+  IKMax: 0.5
+  IKIncrement: 0.5
 --- !u!1 &6819453497707608963
 GameObject:
   m_ObjectHideFlags: 0
