@@ -2330,7 +2330,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231353401}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -11125,6 +11125,10 @@ PrefabInstance:
     - target: {fileID: 2835572112473353171, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: m_Name
       value: Target
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835572112473353171, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.size
