@@ -6322,6 +6322,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1547025989796625443, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: AimPos
+      value: 
+      objectReference: {fileID: 231353405}
     - target: {fileID: 4383543910733340481, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6474,6 +6478,10 @@ PrefabInstance:
       propertyPath: jumpSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7447805439052527141, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: MainCamera
+      value: 
+      objectReference: {fileID: 2128695108}
     - target: {fileID: 8047119511966156500, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.950546
@@ -11108,22 +11116,26 @@ PrefabInstance:
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1827489177}
+      objectReference: {fileID: 1827489179}
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: set_enabled
       objectReference: {fileID: 0}
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Behaviour, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
+      propertyPath: hit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: FIDATI SOLO DEL VERO VERDE
       objectReference: {fileID: 0}
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -17496,7 +17508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1827489178
 RectTransform:
   m_ObjectHideFlags: 0
