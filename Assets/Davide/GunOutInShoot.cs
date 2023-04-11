@@ -9,6 +9,13 @@ public class GunOutInShoot : MonoBehaviour
     [SerializeField]
     Renderer gun;
 
+    AudioMgr globalAudioMgr;
+
+
+    private void Start()
+    {
+        globalAudioMgr = GameObject.Find("AudioMgr").GetComponent<AudioMgr>();
+    }
     private void TakeOutGun()
     {
         gun.enabled = true;
@@ -21,4 +28,5 @@ public class GunOutInShoot : MonoBehaviour
         //Debug.Log("Away");
 
     }
+
 }

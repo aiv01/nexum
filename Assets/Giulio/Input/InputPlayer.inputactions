@@ -290,8 +290,30 @@
                 },
                 {
                     "name": "",
+                    "id": "0e7145ac-de13-48ff-9d4b-99b5517b96a2",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GunShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "70402bc2-1da6-4dc6-b6fb-4b90511ea2ee",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GunAim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fed0f5a6-2cd3-4d55-9fc0-9a3d43b41dcc",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

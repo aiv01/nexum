@@ -46,7 +46,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -142,7 +142,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0312a058e05c2d44ebd9bdb396a2c643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ambienceType: 0
+  ambienceType: 1
   jingleSource: {fileID: 8958461881805622768}
   ambientSource: {fileID: 7655713034990765379}
   door: {fileID: 8300000, guid: ea1b53a5f4f1fb344a02e71bcf3dcb45, type: 3}
@@ -250,3 +250,5 @@ MonoBehaviour:
   menuMusic: {fileID: 8300000, guid: 3a0b10bf22a994a5e9b939c974756a24, type: 3}
   levelMusic: {fileID: 8300000, guid: eb3920a2d9adb5048952e2d32470dcd7, type: 3}
   levelEndClip: {fileID: 8300000, guid: c0548ebfa9eb2084a99a8eaa1a6691f4, type: 3}
+  selectOption: {fileID: 8300000, guid: 4f64274f0060bfe4782c2ed0e9a8f514, type: 3}
+  cannotSwitch: {fileID: 8300000, guid: 8fffb5e5d50be3d4cbfe37879af194ae, type: 3}

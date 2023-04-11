@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioMgr : MonoBehaviour
 {
+
     public enum AmbienceType
     {
         MainMenu,
@@ -38,6 +39,8 @@ public class AudioMgr : MonoBehaviour
 
     [SerializeField]
     private AudioClip selectOption;
+    [SerializeField]
+    private AudioClip cannotSwitch;
 
     private void Start()
     {
@@ -85,6 +88,10 @@ public class AudioMgr : MonoBehaviour
         ambientSource.PlayOneShot(box);
     }
 
+    public void CannotSwitch()
+    {
+        ambientSource.PlayOneShot(cannotSwitch);
+    }
     public void SelectOption()
     {
         ambientSource.PlayOneShot(selectOption);

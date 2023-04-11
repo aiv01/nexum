@@ -1961,10 +1961,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerEnter:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9034678911235333393}
+        m_TargetAssemblyTypeName: IsActive, Assembly-CSharp
+        m_MethodName: ChangeSwitchState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   TriggerExit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9034678911235333393}
+        m_TargetAssemblyTypeName: IsActive, Assembly-CSharp
+        m_MethodName: ChangeSwitchState
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &4383543911729377136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2332,8 +2356,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  changeOptionSound: {fileID: 8300000, guid: 50eba275ff7781f459b16de70009b6b3, type: 3}
-  selectOptionSound: {fileID: 8300000, guid: 4f64274f0060bfe4782c2ed0e9a8f514, type: 3}
 --- !u!82 &478102176
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3158,6 +3180,10 @@ PrefabInstance:
     - target: {fileID: 768352695974027248, guid: 102682ad533023149953c87809f0a9e0, type: 3}
       propertyPath: mask.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 768352695974027260, guid: 102682ad533023149953c87809f0a9e0, type: 3}
+      propertyPath: m_TagString
+      value: Robot
       objectReference: {fileID: 0}
     - target: {fileID: 768352695974027263, guid: 102682ad533023149953c87809f0a9e0, type: 3}
       propertyPath: m_Height

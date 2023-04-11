@@ -29,6 +29,14 @@ public class ShootSystem : MonoBehaviour
 
     [SerializeField] Transform gun;
     [SerializeField] BulletMgr MyBM;
+    
+    AudioMgr globalAudioMgr;
+
+
+    private void Start()
+    {
+        globalAudioMgr = GameObject.Find("AudioMgr").GetComponent<AudioMgr>();
+    }
     private void Awake()
     {
         PlayerInput_ = new InputPlayer();
@@ -103,7 +111,9 @@ public class ShootSystem : MonoBehaviour
 
     }
 
-    private void ShootGun() { Shoot(); }
+    private void ShootGun() { Shoot();
+        globalAudioMgr.Shoot();
+    }
     private void Shoot()
     {
         var b = MyBM.GetBullet();

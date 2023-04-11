@@ -37,14 +37,20 @@ public class IsActive : MonoBehaviour
     [SerializeField]
     private UnityEngine.Events.UnityEvent onPauseRequrested;
 
+    private AudioMgr globalAudioMgr;
+
     private void Awake()
     {
         Key = new InputPlayer();
+
+
 
         RobotPlayerController = Robot.GetComponent<PlayerController>();
         RobotAnim = Robot.GetComponent<Animator>();
         EllenPlayerController = Ellen.GetComponent<PlayerController>();
         EllenAnim = Ellen.GetComponent<Animator>();
+
+        globalAudioMgr = GameObject.Find("AudioMgr").GetComponent<AudioMgr>();
     }
 
 
@@ -88,16 +94,17 @@ public class IsActive : MonoBehaviour
         
         if (SwitchCamera.IsActiveCam(EllenCamera))
         {
-            if(Ellen.isGrounded)
+            if (Ellen.isGrounded && !CannotSwitch)
             {
-              EllenPlayerController.enabled = false;
-              EllenAnim.SetFloat("x", 0);
-              EllenAnim.SetFloat("y", 0);
-              RobotPlayerController.enabled = true;
+                EllenPlayerController.enabled = false;
+                EllenAnim.SetFloat("x", 0);
+                EllenAnim.SetFloat("y", 0);
+                RobotPlayerController.enabled = true;
                 currentPlayer = NexumPlayer.Starfire;
-              SwitchCamera.SwitchCam(RobotCamera);
-               
-            }    
+                SwitchCamera.SwitchCam(RobotCamera);
+            }
+            else
+                globalAudioMgr.CannotSwitch();
            
         }
         else if (SwitchCamera.IsActiveCam(RobotCamera))

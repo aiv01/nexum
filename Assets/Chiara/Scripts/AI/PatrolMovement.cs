@@ -104,6 +104,7 @@ public class PatrolMovement : MonoBehaviour
     }
     private void OnDisable()
     {
+        if (moveAnimIndex == 0) return;
         animator.SetBool(moveAnimIndex, false);
     }
 }

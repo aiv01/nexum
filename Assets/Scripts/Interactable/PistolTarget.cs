@@ -22,7 +22,7 @@ public class PistolTarget : MonoBehaviour
 
         hit.Invoke();
         alreadyHitten = true;
-        Debug.Log("Colpito");
+        //Debug.Log("Colpito");
 
         if (resetTime > 0)
             StartCoroutine(ResetAtTime());

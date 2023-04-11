@@ -2717,7 +2717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae6f04925a0db542979f6a6da57ed4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myName: Livello_1
+  myName: Livello 1
   myButton: {fileID: 1840611559}
   myLock: {fileID: 148658701}
   myLevelImage: {fileID: 593982694}

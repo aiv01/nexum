@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
             movment *= 0f;
             move *= 0f;
             ySpeed*= 0f;
+            PlayerVelocity *= 0f;
         }
 
         controller.Move(move * Time.deltaTime * playerSpeed);

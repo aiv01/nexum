@@ -8397,10 +8397,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioMgr
       objectReference: {fileID: 0}
-    - target: {fileID: 8958461881805622783, guid: 2f74ceea35c55f4418f31d3490021108, type: 3}
-      propertyPath: ambienceType
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f74ceea35c55f4418f31d3490021108, type: 3}
 --- !u!114 &706562991 stripped
@@ -13545,10 +13541,6 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 3926229865307763572, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
-      propertyPath: m_TagString
-      value: Robot
-      objectReference: {fileID: 0}
     - target: {fileID: 3926229865307763576, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: SmoothBlend
       value: 0.1
@@ -17779,7 +17771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1585596330
 MonoBehaviour:
   m_ObjectHideFlags: 0
