@@ -36,6 +36,9 @@ public class AudioMgr : MonoBehaviour
     [SerializeField]
     private AudioClip levelEndClip;
 
+    [SerializeField]
+    private AudioClip selectOption;
+
     private void Start()
     {
         PlayAmbience(ambienceType);
@@ -80,5 +83,10 @@ public class AudioMgr : MonoBehaviour
     public void DroppedBox()
     {
         ambientSource.PlayOneShot(box);
+    }
+
+    public void SelectOption()
+    {
+        ambientSource.PlayOneShot(selectOption);
     }
 }

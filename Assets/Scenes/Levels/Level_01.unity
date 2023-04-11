@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0247684, g: 0.20892528, b: 0.49981013, a: 1}
+  m_IndirectSpecularColor: {r: 0.0247684, g: 0.2089253, b: 0.49981022, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6327,10 +6327,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 432099842, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1092366531, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1547025989796625443, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: AimPos
       value: 
-      objectReference: {fileID: 231353405}
+      objectReference: {fileID: 1856081894}
     - target: {fileID: 4383543910733340481, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6378,6 +6386,18 @@ PrefabInstance:
     - target: {fileID: 4383543910733340490, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.y
       value: 67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383543911609122504, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.50694
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383543911609122504, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 99.94283
+      objectReference: {fileID: 0}
+    - target: {fileID: 4383543911609122504, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -58.77
       objectReference: {fileID: 0}
     - target: {fileID: 4383543911887074882, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: onCancelPressed.m_PersistentCalls.m_Calls.Array.size
@@ -11126,6 +11146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Target
       objectReference: {fileID: 0}
+    - target: {fileID: 2835572112473353171, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2835572112473353176, guid: 94ae66d9ac681a44782b52a3fbdf69bf, type: 3}
       propertyPath: hit.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -12595,7 +12619,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1291794112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17689,6 +17713,11 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!4 &1856081894 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 432099843, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+  m_PrefabInstance: {fileID: 749024270}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &1861437359
 MeshCollider:
   m_ObjectHideFlags: 0

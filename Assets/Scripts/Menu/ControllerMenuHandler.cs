@@ -20,6 +20,9 @@ public class ControllerMenuHandler : MonoBehaviour
 
     GameObject selectedControl => UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
 
+
+
+
     private void Awake()
     {
         gameInput = new InputPlayer();
@@ -46,6 +49,8 @@ public class ControllerMenuHandler : MonoBehaviour
 
     private void HandleNevigationPerformed(InputAction.CallbackContext ctx)
     {
+
+        //myAS.PlayOneShot(changeOptionSound);
         if (
             (ctx.control.device is Gamepad || ctx.control.device is Keyboard) &&
             ctx.action.ReadValue<Vector2>().sqrMagnitude > .01f &&

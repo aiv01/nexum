@@ -12,13 +12,13 @@ public class GunOutInShoot : MonoBehaviour
     private void TakeOutGun()
     {
         gun.enabled = true;
-        Debug.Log("Out");
+        //Debug.Log("Out");
     }
 
     private void PutAwayGun()
     {
         gun.enabled = false;
-        Debug.Log("Away");
+        //Debug.Log("Away");
 
     }
 }
