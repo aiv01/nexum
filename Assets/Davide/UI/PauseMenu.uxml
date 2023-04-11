@@ -1,7 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="BG" style="justify-content: space-around; align-items: stretch; width: auto; height: 1093px; left: auto; top: auto; right: auto; bottom: 0; background-image: url(&apos;project://database/Assets/Art/Sprites/UI/Menu/OptionsMenu.png?fileID=2800000&amp;guid=618ba7495f0d0c94c889691e118c0841&amp;type=3#OptionsMenu&apos;); -unity-background-scale-mode: scale-to-fit; -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-right: 0; -unity-slice-bottom: 0;">
-        <ui:VisualElement name="Continue">
-            <ui:Button text="Button" display-tooltip-when-elided="true" style="width: 15%; height: 15%;" />
-        </ui:VisualElement>
-    </ui:VisualElement>
-</ui:UXML>

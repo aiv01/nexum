@@ -25,8 +25,9 @@ public class LevelSelectMgr : MonoBehaviour
             Levels[i].enabled = false;
 
             if (i > 0 && !save.WasLevelCompleted(save.SaveFileNumber, i))            
-                Levels[i].isUnlocked = false;
-
+                Levels[i].myState = LevelState.Unlocked;
+            if (save.WasLevelCompleted(save.SaveFileNumber, i))
+                Levels[i].myState = LevelState.Completed;
             //Debug.Log(save.WasLevelCompleted(save.SaveFileNumber, i + 1));
             Levels[i].enabled = true;
         }

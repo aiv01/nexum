@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using TMPro;
 
 
+
+
 [DisallowMultipleComponent]
 public class ButtonLevel : MonoBehaviour
 {
@@ -18,21 +20,38 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField]
     Image myLevelImage;
     [SerializeField]
+    Image myCheck;
+    [SerializeField]
     TMPro.TextMeshProUGUI myText;
 
-    public bool isUnlocked = true;
+    public LevelState myState;
     private void OnEnable()
     {
-        if (isUnlocked)
-            LevelUnlocked();
-        else
-            LevelLocked();
+        switch (myState)
+        {
+            case LevelState.Locked:
+                LevelLocked();
+                break;
+            case LevelState.Unlocked:
+                LevelUnlocked();
+                break;
+            case LevelState.Completed:
+                LevelCompleted();
+                break;
+        }
+    }
+
+    private void LevelCompleted()
+    {
+        LevelUnlocked();
+        myCheck.enabled = true;
     }
 
     private void LevelLocked()
     {
         myText.text = "Locked";
         myLock.enabled = true;
+        myCheck.enabled = false;
         myLevelImage.enabled = false;
 
         var bc = myButton.colors;
@@ -49,10 +68,11 @@ public class ButtonLevel : MonoBehaviour
         myLevelImage.enabled = true;
         myLock.enabled = false;
     }
-    //private void OnDisable()
-    //{
-    //    myLock.color = new Color(1f, 1f, 1f, 1f);
-    //    myText.text = "Locked";
-    //    Debug.Log("Disable");
-    //}
+}
+public enum LevelState
+{
+    Locked = 0,
+    Unlocked = 1,
+    Completed = 2,
+    Last = 3
 }
