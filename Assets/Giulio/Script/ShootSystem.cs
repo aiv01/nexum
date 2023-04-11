@@ -114,16 +114,6 @@ public class ShootSystem : MonoBehaviour
     }
     private void OnAnimatorIK(int layerIndex)
     {
-        //return;
-        //if (layerIndex != 1) return;
-
-        //if (IKStr <= 0f)
-        //{
-        //    myAnim.SetLookAtWeight(0);
-        //    myAnim.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0);
-        //    myAnim.SetIKPositionWeight(AvatarIKGoal.RightHand, 0);
-        //    return;
-        //}
 
 
         myAnim.SetLookAtWeight(IKStr);
@@ -135,7 +125,7 @@ public class ShootSystem : MonoBehaviour
     }
     private void Input()
     {
-        if (!myPC.isGrounded()) { Debug.Log("NOT GRD"); return; }
+        if (!myPC.isGround) { Debug.Log("NOT GRD"); return; }
 
         if (gunUp_.WasPressedThisFrame())
         {
@@ -143,6 +133,7 @@ public class ShootSystem : MonoBehaviour
             {
                 SwitchCamera.SwitchCam(AimCamOn);
                 //transform.rotation = AimPos.transform.rotation;
+                AimPos.gameObject.SetActive(true);
                 myPC.isShoot = true;
                 IncrementIK = true;
                 IKStr = 0.01f;
@@ -162,12 +153,13 @@ public class ShootSystem : MonoBehaviour
 
         if (gunUp_.WasReleasedThisFrame() && SwitchCamera.IsActiveCam(AimCamOn))
         {
+                AimPos.gameObject.SetActive(false);
             IncrementIK = false;
             myAnim.SetBool("isAiming", false);
         }
     }
 
-
+    private void ActivateIK() { }
     private void OnTakeOutGun() {
     }
     private void PutAwayGun()

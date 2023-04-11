@@ -22,10 +22,42 @@ public class RespawnZone : MonoBehaviour
     //    other.GetComponent<CharacterController>().Move(Vector3.up * 1000);
     //}
     [SerializeField]
-    UnityEngine.Events.UnityEvent Respawn;
+    Transform[] objectToCkeck;
+
+    Dictionary<Transform, Vector3> respawPositionDict;
+    //UnityEngine.Events.UnityEvent Respawn;
+    private void Awake()
+    {
+        respawPositionDict = new Dictionary<Transform, Vector3>();
+    }
+
+    private void OnEnable()
+    {
+        foreach (var t in objectToCkeck)
+        {
+            respawPositionDict[t] = t.position;
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
-        Respawn.Invoke();
+        Debug.Log(other.name);
+        if (respawPositionDict.ContainsKey(other.transform))
+        {
+            Debug.Log(respawPositionDict[other.transform]);
+            var otherCC = other.GetComponent<CharacterController>();
+            if (otherCC == null)
+            {
+                other.transform.position = respawPositionDict[other.transform];
+            }
+
+            else
+            {
+                otherCC.enabled = false;
+                other.transform.position = respawPositionDict[other.transform];
+                otherCC.enabled = true;
+            }
+        }
     }
 }

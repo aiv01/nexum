@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
 
     public bool isShoot = false;
+    public bool isGround = false;
 
     [Header("Other")]
     [SerializeField] CharacterController controller;
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         MovePlayer();
+        isGround = isGrounded();
         input();
         UPDATE_Direction();
     }
@@ -158,7 +160,7 @@ public class PlayerController : MonoBehaviour
     void input()
     {
         //Debug.Log(isGrounded());
-        if (isGrounded()) //jump
+        if (isGround) //jump
         {
             animatorController.SetBool("isGround", true);
             animatorController.SetBool("isJump", false);
@@ -173,9 +175,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            animatorController.SetBool("isGround", false);
-            animatorController.SetBool("isJump", false);
-            animatorController.SetBool("isFalling", true);
+            try
+            {
+                animatorController.SetBool("isGround", false);
+                animatorController.SetBool("isJump", false);
+                animatorController.SetBool("isFalling", true);
+            }
+            finally { }
+
         }
 
         if (run_.IsPressed()) //run

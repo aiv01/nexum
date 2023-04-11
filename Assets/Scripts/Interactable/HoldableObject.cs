@@ -30,13 +30,13 @@ public class HoldableObject : Interactable
     private void Awake()
     {
         myRB = GetComponent<Rigidbody>();
-        activationCollider = GetComponent<Collider>();
+        //activationCollider = GetComponent<Collider>();
         HoverVFX.enabled = false;
     }
 
     public override void Interact()
     {
-        Debug.Log("interact");
+        //Debug.Log("interact");
 
         isHolding = !isHolding;
         activationCollider.enabled = false;
@@ -44,15 +44,15 @@ public class HoldableObject : Interactable
 
         if (!isHolding)
         {
-            Debug.Log("BUTTO PER TERRA LE COSE");
-            //transform.position = dropZone.position;
+            //Debug.Log("BUTTO PER TERRA LE COSE");
+            transform.position = dropZone.position;
             visibleDropPosition.gameObject.SetActive(false);
             //visibleDropPosition.transform.position = Vector3.right * -100;
             HoverVFX.enabled = false;
             myRB.isKinematic = false;
             //boxCollider.enabled = true;
             //myRB.useGravity = true;
-            myRB.velocity = player.transform.forward * 4f;
+            //myRB.velocity = player.transform.forward * 4f;
             Debug.Log(player.velocity);
             transform.parent = null;
         }

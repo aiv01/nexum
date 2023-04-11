@@ -21,8 +21,4 @@ public class GunOutInShoot : MonoBehaviour
         Debug.Log("Away");
 
     }
-    private void ShootGun()
-    {
-        Debug.Log("Shoot");
-    }
 }

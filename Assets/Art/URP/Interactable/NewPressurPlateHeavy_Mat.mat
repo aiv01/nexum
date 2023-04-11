@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewPressurPlatePressed_Mat
+  m_Name: NewPressurPlateHeavy_Mat
   m_Shader: {fileID: -6465566751694194690, guid: 4f8e2b6cf17d3b04ca824ca44f846f8a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -163,7 +163,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Emissive_Active: {r: 0.5026177, g: 15.999998, b: 0, a: 1}
+    - _Emissive_Active: {r: 0, g: 1.3350784, b: 1.3350784, a: 1}
     - _Emissive_Inactive: {r: 0, g: 0, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

@@ -29,7 +29,7 @@ public class PressurePlate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Premuto");
+        Debug.Log("Premuto by " + other.name);
         if (requireHeavyObject && other.GetComponent<IsHeavyObject>() == null) return;
 
         _entityPressing++;
@@ -37,13 +37,13 @@ public class PressurePlate : MonoBehaviour
 
         onPressed.Invoke();
         plate.localPosition = transform.up * pressedPlateDepth;
-        Debug.Log("pressed by " + other.name);
+        //Debug.Log("pressed by " + other.name);
 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Rilascitao");
+        Debug.Log("Rilascitao da " + other.name);
         if (requireHeavyObject && other.GetComponent<IsHeavyObject>() == null) return;
 
         _entityPressing--;
@@ -51,7 +51,7 @@ public class PressurePlate : MonoBehaviour
 
         onReleased.Invoke();
         plate.localPosition = transform.up * neutralPlateDepth;
-        Debug.Log("releaded by " + other.name);
+        //Debug.Log("releaded by " + other.name);
 
     }
 
