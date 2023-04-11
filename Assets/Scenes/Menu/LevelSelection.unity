@@ -1291,6 +1291,7 @@ MonoBehaviour:
   myLevelImage: {fileID: 1549838567}
   myCheck: {fileID: 322596186}
   myText: {fileID: 1723543460}
+  LevelNumber: 3
   myState: 0
 --- !u!114 &1059552775
 MonoBehaviour:
@@ -1373,19 +1374,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1059552775}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 196883647}
-        m_TargetAssemblyTypeName: LevelSelectMgr, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1090655282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,6 +2495,7 @@ MonoBehaviour:
   myLevelImage: {fileID: 477461636}
   myCheck: {fileID: 2036089730}
   myText: {fileID: 1304929921}
+  LevelNumber: 4
   myState: 0
 --- !u!114 &1808158828
 MonoBehaviour:
@@ -2588,19 +2578,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1808158828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 196883647}
-        m_TargetAssemblyTypeName: LevelSelectMgr, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1840611555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,19 +2704,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1840611557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 196883647}
-        m_TargetAssemblyTypeName: LevelSelectMgr, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1840611560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2757,6 +2723,7 @@ MonoBehaviour:
   myLevelImage: {fileID: 593982694}
   myCheck: {fileID: 1175493640}
   myText: {fileID: 632190375}
+  LevelNumber: 2
   myState: 0
 --- !u!1 &2007214339
 GameObject:

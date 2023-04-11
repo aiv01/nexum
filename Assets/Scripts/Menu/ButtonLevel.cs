@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+using UnityEngine.SceneManagement;
 
 
 
@@ -24,6 +25,9 @@ public class ButtonLevel : MonoBehaviour
     [SerializeField]
     TMPro.TextMeshProUGUI myText;
 
+    [SerializeField]
+    int LevelNumber;
+
     public LevelState myState;
     private void OnEnable()
     {
@@ -39,6 +43,15 @@ public class ButtonLevel : MonoBehaviour
                 LevelCompleted();
                 break;
         }
+
+        myButton.onClick.AddListener(ChangeLevel);
+    }
+
+    private void ChangeLevel()
+    {
+        if (myState == LevelState.Locked) return;
+
+        SceneManager.LoadScene(LevelNumber);
     }
 
     private void LevelCompleted()

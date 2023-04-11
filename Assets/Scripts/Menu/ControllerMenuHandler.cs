@@ -32,12 +32,14 @@ public class ControllerMenuHandler : MonoBehaviour
     {
         SelectFirstControl();
         gameInput.Menu.Enable();
+        Cursor.lockState = CursorLockMode.None;
         gameInput.Menu.Cancel.performed += HandleCancelPressed;
         gameInput.Menu.Navigate.performed += HandleNevigationPerformed;
     }
     private void OnDisable()
     {
         gameInput.Menu.Cancel.performed -= HandleCancelPressed;
+        Cursor.lockState = CursorLockMode.Locked;
         gameInput.Menu.Navigate.performed -= HandleNevigationPerformed;
         gameInput.Menu.Disable();
     }
