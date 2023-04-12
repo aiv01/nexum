@@ -101,9 +101,11 @@ public class PatrolMovement : MonoBehaviour
     private void OnEnable()
     {
         currTimer = 0;
+        agent.SetDestination(patrolPoints[currPatrolIdx].position);
     }
     private void OnDisable()
     {
+        agent.SetDestination(transform.position);// to stop patrol
         if (moveAnimIndex == 0) return;
         animator.SetBool(moveAnimIndex, false);
     }

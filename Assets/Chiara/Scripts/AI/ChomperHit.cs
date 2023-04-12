@@ -19,12 +19,9 @@ public class ChomperHit : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnHit()
     {
-        Bullet bulletComp;
-        if(collision.gameObject.TryGetComponent<Bullet>(out bulletComp))
-        {
-            animator.SetTrigger(hitAnimIndex);
-        }
+        animator.SetTrigger(hitAnimIndex);
+        Debug.Log("Hit");
     }
 }
