@@ -7445,6 +7445,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1944118000, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1547025989796625443, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: AimPos
       value: 
@@ -7499,7 +7503,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4383543911609122504, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.50694
+      value: -18.630207
       objectReference: {fileID: 0}
     - target: {fileID: 4383543911609122504, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7595,7 +7599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5949302626668572115, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.524242
+      value: -18.64318
       objectReference: {fileID: 0}
     - target: {fileID: 5949302626668572115, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7635,7 +7639,7 @@ PrefabInstance:
       objectReference: {fileID: 2128695108}
     - target: {fileID: 8047119511966156500, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -31.950546
+      value: -32.33791
       objectReference: {fileID: 0}
     - target: {fileID: 8047119511966156500, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16924,7 +16928,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 04fa4995cb1cfcd4eb8dc1defa230c89, type: 3}
 --- !u!64 &1427958444
@@ -23648,7 +23652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128695105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.524242, y: 99.79772, z: -59.72}
+  m_LocalPosition: {x: -18.64318, y: 99.79772, z: -59.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

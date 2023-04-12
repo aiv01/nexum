@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0247684, g: 0.2089253, b: 0.49980998, a: 1}
+  m_IndirectSpecularColor: {r: 0.0247684, g: 0.2089253, b: 0.49981022, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14751,7 +14751,7 @@ PrefabInstance:
       objectReference: {fileID: 32382543}
     - target: {fileID: 1944118000, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_Volume
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3926229865307763576, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: SmoothBlend
@@ -14759,7 +14759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4383543911609122504, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.046942
+      value: -11.170206
       objectReference: {fileID: 0}
     - target: {fileID: 4383543911609122504, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14827,7 +14827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5949302626668572115, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.064241
+      value: -11.183182
       objectReference: {fileID: 0}
     - target: {fileID: 5949302626668572115, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14847,7 +14847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8047119511966156500, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.090546
+      value: -3.4779093
       objectReference: {fileID: 0}
     - target: {fileID: 8047119511966156500, guid: ea45c9b37ee5fe241b67fbc776081817, type: 3}
       propertyPath: m_LocalPosition.z
@@ -17974,7 +17974,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1524203612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.064241, y: 1.5627228, z: -40.32}
+  m_LocalPosition: {x: -11.183182, y: 1.5627228, z: -40.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
